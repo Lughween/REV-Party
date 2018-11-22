@@ -7,7 +7,7 @@
 #include "elementliste.h"
 #define DIMMAX 100 // taille maximale de la liste statique
 #define VIDE -1   // constante  pour indiquer que la liste est vide (par convention)
-
+#define ERRLOG "error.txt" //fichier de log pour les erreurs
 /* ----------------------------------
         Déclaration des types
    --------------------------------*/
@@ -19,6 +19,11 @@ struct liste {
 };
 
 typedef struct liste liste;
+
+void errorMsg(char *msg);
+void shiftListUp(liste *p); //décale tout les elt d'une liste d'un cran vers l'avant.
+void shifListDown(liste *p); //idem mais vers l'arrière (le premier element seras suprimé !)
+
 int nbEltList(liste lst); // nombre d'éléments
 void createList(liste *p); // renvoie une liste statique
 void addFrontList(liste *p, Elementliste e); // ajoute un élément devant
