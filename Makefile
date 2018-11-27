@@ -12,4 +12,8 @@ utils_sd.o: utils_sd.c
 	gcc -o utils_sd.o -c utils_sd.c $(CFLAGS)
 
 clean:
+<<<<<<< HEAD
 	rm -rf *.o test
+=======
+	rm -rf *.o
+>>>>>>> d88e82c092f32630e1d3bd995f9734430a9c2eba

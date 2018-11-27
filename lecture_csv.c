@@ -18,7 +18,11 @@ int convertir_str_to_int(char *str){
     return val;
 }
 
+<<<<<<< HEAD
 void lire_csv(char *vote_csv, t_mat_int_dyn *votes){
+=======
+void lire_csv(char *vote_csv, t_mat_int_dyn *votes,int nb_canditats){
+>>>>>>> d88e82c092f32630e1d3bd995f9734430a9c2eba
     FILE *csv = NULL;
     csv = fopen(vote_csv,"r");
     int i_ligne = 0;
@@ -26,8 +30,11 @@ void lire_csv(char *vote_csv, t_mat_int_dyn *votes){
     char ligne[TAILLE_MAX];
     char *champ;
     char *svptr;
+<<<<<<< HEAD
 
     int nb_canditats = candidats->dim;
+=======
+>>>>>>> d88e82c092f32630e1d3bd995f9734430a9c2eba
     if(csv == NULL){
         printf("err::FICHIER:%s ILLISIBLE !\n",vote_csv);
         exit(1);
@@ -51,13 +58,3 @@ void lire_csv(char *vote_csv, t_mat_int_dyn *votes){
     }
     fclose(csv);
 }
-
-
-
-
-
-
-
-
-
-
