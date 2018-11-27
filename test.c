@@ -114,9 +114,9 @@ void test3_csv(){
 }
 int main(int argc, char const *argv[])
 {   
-    test1();
-    test1_csv();
-    test2_csv();
+    // test1();
+    // test1_csv();
+    // test2_csv();
     test3_csv();
     return 0;
 }
