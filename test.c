@@ -81,7 +81,7 @@ void test2_csv(){ //uniquement les candidats 5 candidats.
     creer_str_tab_dyn(&candidats,5);
     printf("test2=ok1\n");
     csv_get_candidat("fichier_test/test2.csv",&candidats);
-    affiche_str_tab(&candidats,stdout);
+    affiche_str_tab(&candidats,testing);
     printf("test2=ok2\n");
     free_str_tab_dyn(&candidats);
     fclose(testing);
@@ -94,10 +94,13 @@ void test3_csv(){
     testing = fopen("fichier_test/csv.tmp","w");
     t_mat_int_dyn votes;
     str_tab_dyn candidats;
+    str_tab_dyn cdd;
+    creer_t_mat_int_dyn(&cdd,10,5);
     creer_str_tab_dyn(&candidats,5);
     creer_t_mat_int_dyn(&votes,10,5);
     printf("test3=ok1\n");
-    lire_csv("fichier_test/test3.csv",&candidats,&votes);
+    csv_get_votes("fichier_test/test3.csv",&votes,candidats.dim);
+    csv_get_candidat("fichier_test/test3.csv",&candidats);
     affiche_str_tab(&candidats,testing);
     printf("affiche1:OK!\n");
     affiche_t_mat_int_dyn(votes,testing);
@@ -110,9 +113,9 @@ void test3_csv(){
 }
 int main(int argc, char const *argv[])
 {   
-    // test1();
-    // test1_csv();
+    test1();
+    test1_csv();
     test2_csv();
-    //test3_csv();
+    test3_csv();
     return 0;
 }
