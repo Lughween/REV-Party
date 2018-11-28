@@ -13,6 +13,9 @@
 #define OFFSET 3
 
 void lire_csv(char *vote_csv, t_mat_int_dyn *votes,int nb_candidats);
+
+void csv_get_candidat(char *vote_csv,str_tab_dyn *candidat);
+void csv_get_votes(char *vot_csv,t_mat_int_dyn *votes,int nb_candidats);
 //convertit une chaine de caractère contanant un chiffre en int si la chaine
 // n'est pas un nombre retourne -1
 int convertir_str_to_int(char *str); 

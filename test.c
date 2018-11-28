@@ -77,16 +77,12 @@ void test1_csv(){
 void test2_csv(){ //uniquement les candidats 5 candidats.
     FILE *testing = NULL;
     testing = fopen("fichier_test/csv.tmp","w");
-    t_mat_int_dyn votes;
     str_tab_dyn candidats;
     creer_str_tab_dyn(&candidats,5);
-    creer_t_mat_int_dyn(&votes,0,0);
     printf("test2=ok1\n");
-    lire_csv("fichier_test/test2.csv",&candidats,&votes);
-    affiche_str_tab(&candidats,testing);
-    affiche_t_mat_int_dyn(votes,testing);
+    csv_get_candidat("fichier_test/test2.csv",&candidats);
+    affiche_str_tab(&candidats,stdout);
     printf("test2=ok2\n");
-    free_t_mat_int(&votes);
     free_str_tab_dyn(&candidats);
     fclose(testing);
     assert(cmp_file("fichier_test/testcsv_2","fichier_test/csv.tmp"));
@@ -116,7 +112,7 @@ int main(int argc, char const *argv[])
 {   
     // test1();
     // test1_csv();
-    // test2_csv();
-    test3_csv();
+    test2_csv();
+    //test3_csv();
     return 0;
 }
