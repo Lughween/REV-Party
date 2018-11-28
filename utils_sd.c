@@ -155,3 +155,8 @@ void free_t_mat_char(t_mat_char_star_dyn *t){
     }
     free(t->tab);
 }
+
+void add_str_strTab(str_tab_dyn *t,int indice,char *str){
+    realloc(t->tab[indice],strlen(str)*sizeof(char)+sizeof(char));
+    t->tab[indice] = str;
+}
