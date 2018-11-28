@@ -6,7 +6,7 @@ void del_jump(char *ligne){
         *i = '\0';
 }
 
-
+//edit from GH
 int convertir_str_to_int(char *str){
     int val=0;
     int k=0;
