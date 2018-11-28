@@ -74,3 +74,5 @@ void free_t_mat_int(t_mat_int_dyn *t);
 void free_t_tab_int(t_tab_int_dyn *t);
 void free_str_tab_dyn(str_tab_dyn *t);
 void free_t_mat_char(t_mat_char_star_dyn *t);
+
+void add_str_strTab(str_tab_dyn *t,int indice,char *);
