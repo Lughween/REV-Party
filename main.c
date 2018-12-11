@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <stdbool.h>
 
 #define bal_i 0
@@ -12,9 +13,8 @@ bool is_bal_d = false;
 bool is_bal_l = false;
 bool is_bal_m = false;
 
-char **analyse_balise_get_arg(int argc,char const *argv[]){
-    char **param_balise; //un tableau de chaine de caractères
-    param_balise = malloc(4*sizeof(char*)); // une case par balise possible (max 3 balises)
+void analyse_balise_get_arg(int argc,char const *argv[], char **param_balise[4]){
+    *param_balise = malloc(4*sizeof(char*)); // une case par balise possible (max 3 balises)
 
 
     int i_arg=1; //numéro argument
@@ -48,18 +48,43 @@ char **analyse_balise_get_arg(int argc,char const *argv[]){
             puts("erreur argument !\n");
             exit(EXIT_FAILURE);
             }
+            i_arg++;
         }
         else
         {
-            puts("erreur argument !\n");
+            puts("pas un argument !\n");
             exit(EXIT_FAILURE);
         }
-    }
-    return param_balise;  
+    } 
 }
 
 int main(int argc, char const *argv[])
 {   
-    analyse_balise_get_arg(argc,argv);
+    char *params[4]; 
+    analyse_balise_get_arg(argc,argv,&params);
+    char *logfp;
+    if(is_bal_l)
+        logfp = params[bal_l];
+    else
+        logfp = "stdout";
+
+    if(is_bal_m){
+        printf("parm_m :%s\n",params[bal_m]);
+        if(!strcmp(params[bal_m],"uni1"))
+            printf("scrutin uni1\n");
+        else if(!strcmp(params[bal_m],"uni2"))
+            printf("scrutin uni2\n");
+        else if(!strcmp(params[bal_m],"cm"))
+            printf("scrutin condorcet minmax\n");
+        else if(!strcmp(params[bal_m],"cp"))
+            printf("scrutin condorcet paires\n");
+        else if(!strcmp(params[bal_m],"cs"))
+            printf("scrutin condorcet Schuzle\n");
+        else if(!strcmp(params[bal_m],"va"))
+            printf("scrutin vote alternatif\n");
+        else
+            printf("paramètre de m doit être un des suivant :  uni1,uni2,cm,cp;cs,va !\n");
+    }else
+        printf("tout les scrutins \n");
     return 0;
 }
