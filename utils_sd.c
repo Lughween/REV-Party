@@ -66,14 +66,14 @@ void affiche_t_mat_int_dyn(t_mat_int_dyn t_tab, FILE *logfp){
 
 void affiche_tab_int(int *tab, int dim, FILE *logfp){
     for(int i=0;i<dim;i++){
-        fprintf(logfp,"%d;",tab[i]);
+        fprintf(logfp,"%d ",tab[i]);
     }
     fprintf(logfp,"\n");
 }
 
 void affiche_str_tab(str_tab_dyn *tab,FILE *logfp){
     for(int i=0;i<tab->dim;i++){
-        fprintf(logfp,"%s;",tab->tab[i]);
+        fprintf(logfp,"%s ",tab->tab[i]);
     }
     fprintf(logfp,"\n");
 }
@@ -81,7 +81,7 @@ void affiche_str_tab(str_tab_dyn *tab,FILE *logfp){
 void affiche_t_mat_char_star_dyn(t_mat_char_star_dyn t, FILE *logfp){
     for(int i=0;i<t.nbRows;i++){
         for(int j=0;j<t.nbCol;j++){
-            fprintf(logfp,"%s;",t.tab[i][j]);
+            fprintf(logfp,"%s ",t.tab[i][j]);
         }
         fprintf(logfp,"\n");
     }

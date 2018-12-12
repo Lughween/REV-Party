@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "liste.h"
-#include "lecture_csv.h"
 #include <time.h>
 #include <assert.h>
 #include <stdbool.h>
+#include "condorcet.h"
 
 #define TAILLE_MAX 1000
 int RandA_B(int a,int b){
@@ -109,11 +109,59 @@ void test3_csv(){
     assert(cmp_file("fichier_test/testcsv_3","fichier_test/csv.tmp"));
     printf("test3:OK\n");
 }
+
+
+void str_test1(){
+    printf("0 1 2 2 3\n5 0 3 3 3\n6 4 0 3 3\n7 6 5 0 5\n6 6 5 3 0\n");
+}
+void test1_duelmat(){
+    str_tab_dyn candidats;
+    t_mat_int_dyn votes;
+
+    int nb_candidats = 5;
+    int nb_votants = 10;
+    char csv_test[] = "fichier_test/test3.csv";
+
+    creer_t_mat_int_dyn(&votes,nb_votants,nb_candidats);
+    creer_str_tab_dyn(&candidats,nb_candidats);
+    
+    printf("ok1\n");
+    csv_get_votes(csv_test,&votes,nb_candidats);
+    csv_get_candidat(csv_test,&candidats);
+
+    t_mat_int_dyn duel_mat;
+    creer_duel_mat(&duel_mat,votes);
+    printf("ok2\n");
+    affiche_t_mat_int_dyn(duel_mat,stdout);
+    printf("Résultat attendus :\n");
+    str_test1();
+    free_t_mat_int(&duel_mat);
+    free_str_tab_dyn(&candidats);
+    free_t_mat_int(&votes);
+
+    
+
+    
+}
+
+void test_matrice(){
+    t_mat_int_dyn mat;
+    t_mat_int_dyn mat2;
+    creer_t_mat_int_dyn(&mat2,5,5);
+    creer_t_mat_int_dyn(&mat,10,10);
+    affiche_t_mat_int_dyn(mat,stdout);
+    printf("\n");
+    affiche_t_mat_int_dyn(mat2,stdout);
+    printf("\n");
+    affiche_t_mat_int_dyn(mat,stdout);
+}
 int main(int argc, char const *argv[])
 {   
-    test1();
-    test1_csv();
-    test2_csv();
-    test3_csv();
+    // test1();
+    // test1_csv();
+    // test2_csv();
+    // test3_csv();
+    test1_duelmat();
+    //test_matrice();
     return 0;
 }
