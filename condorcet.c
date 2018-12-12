@@ -22,3 +22,31 @@ void creer_duel_mat(t_mat_int_dyn *duel_mat,t_mat_int_dyn votes){
         }
     }
 }
+
+void creer_arc_liste(t_mat_int_dyn duels_mat,liste *liste_arc){
+    Elementliste e;
+    for(int i=0;i<duels_mat.nbRows;i++){
+        for(int j=0;j<i;j++){
+            if(duels_mat.tab[i][j] > duels_mat.tab[j][i]){
+                e.orig = i;
+                e.dest = j;
+                e.poids = duels_mat.tab[i][j];
+            }
+            else if(duels_mat.tab[i][j] < duels_mat.tab[j][i])
+            {
+                e.orig = j;
+                e.dest = i;
+                e.poids = duels_mat.tab[j][i];
+            }
+            else{
+                e.orig = j;
+                e.dest = i;
+                e.poids = duels_mat.tab[j][i];
+                addFrontList(liste_arc,e);
+                e.orig = i;
+                e.dest = j;
+            }
+            addFrontList(liste_arc,e);
+        }
+    }
+}

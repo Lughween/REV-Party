@@ -27,24 +27,27 @@ int main() {
 
 	printf("4 éléments entrés dans la liste\n");
 
-    /* on affiche */
-    printf("** ");
-    dumpList(p,stdout);
-    printf("** \n");
+  /* on affiche */
+  printf("** ");
+  dumpList(p,stdout);
+  printf("** \n");
 
-    printf("Tri :\n");
-    bubbleSortList(&p);
-    dumpList(p,stdout);
+  printf("Tri :\n");
+  bubbleSortList(&p);
+  dumpList(p,stdout);
 
-    addFrontList(&p,e2);
-    printf("** \n");
-   dumpList(p,stdout);
-    printf("Nb elt=%d\n",nbEltList(p));
-   pickEltList(p,&e,2);
-    printf("Element :");
-    afficher_element(e,stdout);
-    printf("\nbelong ? %d\n",belongEltList(p,e1));
-   afficher_element(e,stdout);
+  addFrontList(&p,e2);
+  printf("** \n");
+  dumpList(p,stdout);
+  printf("Nb elt=%d\n",nbEltList(p));
+  delTailList(&p);
+  dumpList(p,stdout);
+  printf("Nb elt=%d\n",nbEltList(p));
+  pickEltList(p,&e,2);
+  printf("Element :");
+  afficher_element(e,stdout);
+  printf("\nbelong ? %d\n",belongEltList(p,e1));
+  afficher_element(e,stdout);
 
     return(0);
 }

@@ -17,12 +17,17 @@ void copie_element(Elementliste *dest, Elementliste source){
 }
 
 void afficher_element(Elementliste e,FILE *fp){
-    fprintf(fp,"%d;%d;%d\n",e.orig,e.dest,e.poids);
+    fprintf(fp,"(%d,%d:%d)\n",e.orig,e.dest,e.poids);
 }
 
-bool cmp_element(Elementliste e1, Elementliste e2){
+bool cmp_elements(Elementliste e1, Elementliste e2){
     if(e1.poids == e2.poids && e1.orig == e2.orig 
         && e1.dest == e2.dest)
+        return true;
+    return false;
+}
+bool est_a_sup_b(Elementliste a,Elementliste b){
+    if(a.poids >= b.poids)
         return true;
     return false;
 }
