@@ -126,18 +126,24 @@ void test1_duelmat(){
     
     printf("ok1\n");
     csv_get_votes(csv_test,&votes,nb_candidats);
-    csv_get_candidat(csv_test,&candidats);
+    
 
     t_mat_int_dyn duel_mat;
     creer_duel_mat(&duel_mat,votes);
     printf("ok2\n");
     affiche_t_mat_int_dyn(duel_mat,stdout);
-    printf("Résultat attendus :\n");
-    str_test1();
-    liste l;
-    creer_arc_liste(duel_mat,&l);
-    dumpList(l,stdout);
-    genererPython(l,"graphe.py");
+    int vainqueur = vainqueur_condorcet(duel_mat);
+    csv_get_candidat(csv_test,&candidats);
+    if(vainqueur != -1)
+        printf("le vainqueur est : %s\n",candidats.tab[vainqueur]);
+    else
+        printf("il n'y à pas de vainqueur de condorcet :/ ");
+    // printf("Résultat attendus :\n");
+    // // str_test1();
+    // // liste l;
+    // // creer_arc_liste(duel_mat,&l);
+    // // dumpList(l,stdout);
+    // // genererPython(l,"graphe.py");
     free_t_mat_int(&duel_mat);
     free_str_tab_dyn(&candidats);
     free_t_mat_int(&votes);
@@ -225,9 +231,9 @@ int main(int argc, char const *argv[])
     // test1_csv();
     // test2_csv();
     // test3_csv();
-    //test1_duelmat();
+    test1_duelmat();
     //test2_duelmat();
-    test_duelmat_global();
+    //test_duelmat_global();
     //test_matrice();
     return 0;
 }

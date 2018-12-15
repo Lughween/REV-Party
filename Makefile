@@ -1,4 +1,4 @@
-CFLAGS=-Wall -g -lm
+CFLAGS=-Wall -g -lm -L -lcircuit
 
 all: test
 

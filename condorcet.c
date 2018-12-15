@@ -31,22 +31,59 @@ void creer_arc_liste(t_mat_int_dyn duels_mat,liste *liste_arc){
                 e.orig = i;
                 e.dest = j;
                 e.poids = duels_mat.tab[i][j];
+                addFrontList(liste_arc,e);
             }
             else if(duels_mat.tab[i][j] < duels_mat.tab[j][i])
             {
                 e.orig = j;
                 e.dest = i;
                 e.poids = duels_mat.tab[j][i];
-            }
-            else{
-                e.orig = j;
-                e.dest = i;
-                e.poids = duels_mat.tab[j][i];
                 addFrontList(liste_arc,e);
-                e.orig = i;
-                e.dest = j;
             }
-            addFrontList(liste_arc,e);
+            
         }
     }
+}
+
+int vainqueur_condorcet(t_mat_int_dyn duels_mat){
+    bool vainqueur = true;
+    int i =0;
+    int j;
+    while(i<duels_mat.nbRows){
+        j=0;
+        while(j<duels_mat.nbCol && vainqueur){
+            if(duels_mat.tab[i][j] <= duels_mat.tab[j][i] && i != j) //si une défaite le candidta n'est pas vainqueur
+                vainqueur = false;
+            j++;
+        }
+        if(vainqueur) //si aucune défaite 
+            return i; //retourne l'indice du vainqueur
+        i++;
+        vainqueur = true;
+    }
+    return -1; //si aucun gagnant retourne -1
+}
+
+int condorcet_minmax(t_mat_int_dyn duels_mat){
+    int vainqueur = vainqueur_condorcet(duels_mat);
+    if(condorcet_minmax != -1)
+        return vainqueur;
+    int scoreMinMax; //le meillieurs des pires scores;
+    int scoreMinActuel;
+    for(int i=0;i<duels_mat.nbRows;i++){
+        if(i ==0)
+            scoreMinActuel = duels_mat.tab[i][1];
+        else
+            scoreMinActuel = duels_mat.tab[i][0];
+        for(int j=0;j<duels_mat.nbCol;j++){
+            if(i!=j)
+                if(duels_mat.tab[i][j] < scoreMinActuel)
+                    scoreMinActuel = duels_mat.tab[i][j];
+        }
+        if(scoreMinMax < scoreMinActuel){
+            scoreMinMax = scoreMinActuel;
+            vainqueur = i;
+            }
+    }
+    return vainqueur;
 }

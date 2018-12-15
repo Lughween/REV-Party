@@ -37,4 +37,5 @@ void swapEltList(Elementliste *a,Elementliste *b); // échange deux éléments d
 void bubbleSortList(liste *p); // trie la liste
 void pickEltList(liste l,Elementliste *e,int index); // renvoie l'élément n° index
 bool belongEltList(liste p,Elementliste e); // true si l'élément est dans la liste
+bool circuits(liste larc,int nbCandidats);
 #endif
