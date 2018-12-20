@@ -204,15 +204,35 @@ void test_duelmat_global(){
     // str_test1();
     liste l;
     creer_arc_liste(duel_mat,&l);
+    bubbleSortList(&l);
     dumpList(l,stdout);
+    printf("le vainqueur est: %d\n",vainqueur_condorcet(duel_mat));
+    printf("le vainqueur minmax est! %d\n",condorcet_minmax(duel_mat));
     genererPython(l,"graphe.py");
-    system("python2.7 graphe.py");
+    // system("python2.7 graphe.py");
     free_t_mat_int(&duel_mat);
     free_str_tab_dyn(&candidats);
     free_t_mat_int(&votes);
     
 }
 
+void test_duelmat_g(){
+    int nb_candidats = 5;
+    char csv_test[] = "fichier_test/test_dm.csv";
+    t_mat_int_dyn duel_mat;
+    creer_t_mat_int_dyn(&duel_mat,nb_candidats,nb_candidats);
+    csv_get_duels_mat(csv_test,&duel_mat,nb_candidats);
+    printf("ok2\n");
+    affiche_t_mat_int_dyn(duel_mat,stdout);
+    liste l;
+    creer_arc_liste(duel_mat,&l);
+    dumpList(l,stdout);
+    genererPython(l,"graphe.py");
+    printf("le vainqueur est: %d\n",vainqueur_condorcet(duel_mat));
+    printf("le vainqueur minmax est! %d\n",condorcet_minmax(duel_mat));
+    printf("résultat attendu : -1;\n");
+    free_t_mat_int(&duel_mat);
+}
 
 void test_matrice(){
     t_mat_int_dyn mat;
@@ -231,9 +251,10 @@ int main(int argc, char const *argv[])
     // test1_csv();
     // test2_csv();
     // test3_csv();
-    test1_duelmat();
+    //test1_duelmat();
     //test2_duelmat();
-    //test_duelmat_global();
+    test_duelmat_global();
     //test_matrice();
-    return 0;
+    //test_duelmat_g();
+;    return 0;
 }

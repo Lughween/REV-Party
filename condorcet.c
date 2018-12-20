@@ -45,6 +45,28 @@ void creer_arc_liste(t_mat_int_dyn duels_mat,liste *liste_arc){
     }
 }
 
+void creer_liste_arc_paire(t_mat_int_dyn duels_mat,liste *liste_arc){
+     Elementliste e;
+    for(int i=0;i<duels_mat.nbRows;i++){
+        for(int j=0;j<i;j++){
+            if(duels_mat.tab[i][j] > duels_mat.tab[j][i]){
+                e.orig = i;
+                e.dest = j;
+                e.poids = duels_mat.tab[i][j] - duels_mat.tab[j][i];
+                addFrontList(liste_arc,e);
+            }
+            else if(duels_mat.tab[i][j] < duels_mat.tab[j][i])
+            {
+                e.orig = j;
+                e.dest = i;
+                e.poids = duels_mat.tab[j][i] - duels_mat.tab[i][j];
+                addFrontList(liste_arc,e);
+            }
+            
+        }
+    }
+}
+
 int vainqueur_condorcet(t_mat_int_dyn duels_mat){
     bool vainqueur = true;
     int i =0;
@@ -66,12 +88,14 @@ int vainqueur_condorcet(t_mat_int_dyn duels_mat){
 
 int condorcet_minmax(t_mat_int_dyn duels_mat){
     int vainqueur = vainqueur_condorcet(duels_mat);
-    if(condorcet_minmax != -1)
+    affiche_t_mat_int_dyn(duels_mat,stdout);
+    if(vainqueur != -1)
         return vainqueur;
     int scoreMinMax; //le meillieurs des pires scores;
     int scoreMinActuel;
     for(int i=0;i<duels_mat.nbRows;i++){
-        if(i ==0)
+        //printf("scoreMinactuel :%d\n",scoreMinActuel);
+        if(i == 0)
             scoreMinActuel = duels_mat.tab[i][1];
         else
             scoreMinActuel = duels_mat.tab[i][0];
@@ -86,4 +110,34 @@ int condorcet_minmax(t_mat_int_dyn duels_mat){
             }
     }
     return vainqueur;
+}
+
+int nb_nouveaux_candidat(liste larc,t_arc_p arc){
+    int i =0;
+    int nb_candidat =2;
+    while(i<larc.tete && nb_candidat != 0){
+        if(larc.tab)
+    }
+}
+
+int condorcet_paires_max(t_mat_int_dyn duels_mat){
+    liste larcFull;
+    creer_liste_arc_paire(duels_mat,&larcFull);
+    bubbleSortList(&larcFull);
+    liste larcConf;
+    Elementliste e;
+    headList(larcFull,&e);
+    delFrontList(&larcFull);
+    addFrontList(&larcConf,e);
+    int nb_candidat = 2;
+
+    while(!pileVide(larcFull)){
+
+        if(circuits(larcConf,nb_candidat))
+            delFrontList(&larcConf);
+
+        headList(larcFull,&e);
+        delFrontList(&larcFull);
+        addFrontList(&larcConf,e);
+    }
 }

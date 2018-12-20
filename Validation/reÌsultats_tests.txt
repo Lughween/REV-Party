@@ -1,0 +1,5 @@
+2012.txt	B est vainqueur de Condorcet http://images.math.cnrs.fr/Et-le-vainqueur-du-second-tour-est.html
+calcul1.txt minimax->Y,idem
+calcul2.txt	minimax->V, Schulze-> X, idem
+wiki_paires.tvs paires->A, Shulze ->E, page wikipedia 
+ballots_va.csv	alternatif->D, uni1->A, uni2->B page wikipedia
