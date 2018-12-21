@@ -1,7 +1,7 @@
 // \file condorcet.h
 // \author Viala Ludovic
 // \date december 2018
-#include "lecture_csv.h"
+#include "utils_sd.h"
 #include "liste.h"
 
 ///fonction qui prend une matrice contenant des votes et renvoie sa matrice de duels 
@@ -12,5 +12,5 @@ void creer_arc_liste(t_mat_int_dyn duels_mat,liste *liste_arc);
 int vainqueur_condorcet(t_mat_int_dyn duels_mat);
 //cherche un vainqueur de condorcet et applique la méthode min max si besoin;
 int condorcet_minmax(t_mat_int_dyn creer_duels_mat);
-
 int condorcet_paires_class(t_mat_int_dyn duels_mat);
+

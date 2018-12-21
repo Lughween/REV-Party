@@ -112,15 +112,10 @@ int condorcet_minmax(t_mat_int_dyn duels_mat){
     return vainqueur;
 }
 
-int nb_nouveaux_candidat(liste larc,t_arc_p arc){
-    int i =0;
-    int nb_candidat =2;
-    while(i<larc.tete && nb_candidat != 0){
-        if(larc.tab)
-    }
-}
+
 
 int condorcet_paires_max(t_mat_int_dyn duels_mat){
+    int gagnant;
     liste larcFull;
     creer_liste_arc_paire(duels_mat,&larcFull);
     bubbleSortList(&larcFull);
@@ -131,13 +126,15 @@ int condorcet_paires_max(t_mat_int_dyn duels_mat){
     addFrontList(&larcConf,e);
     int nb_candidat = 2;
 
-    while(!pileVide(larcFull)){
-
+    while(!emptyList(larcFull)){
         if(circuits(larcConf,nb_candidat))
             delFrontList(&larcConf);
 
         headList(larcFull,&e);
+        nb_candidat = nb_nouveaux_candidat(larcConf,e);
         delFrontList(&larcFull);
         addFrontList(&larcConf,e);
     }
+
+    return gagnant;
 }

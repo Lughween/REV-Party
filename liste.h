@@ -38,4 +38,7 @@ void bubbleSortList(liste *p); // trie la liste
 void pickEltList(liste l,Elementliste *e,int index); // renvoie l'élément n° index
 bool belongEltList(liste p,Elementliste e); // true si l'élément est dans la liste
 bool circuits(liste larc,int nbCandidats);
+// renvoi le nb de candidat que rajouterais l'arc
+//s'il était rajouter à la liste
+int nb_nouveaux_candidat(liste larc,Elementliste arc);
 #endif

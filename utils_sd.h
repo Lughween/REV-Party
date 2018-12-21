@@ -1,6 +1,9 @@
 // \file utils_sd
 // \author Ludovic Viala
 // \date November 2018
+#ifndef UTILS_SD_H
+#define UTILS_SD_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "global.h"
@@ -76,3 +79,5 @@ void free_str_tab_dyn(str_tab_dyn *t);
 void free_t_mat_char(t_mat_char_star_dyn *t);
 
 void add_str_strTab(str_tab_dyn *t,int indice,char *);
+
+#endif

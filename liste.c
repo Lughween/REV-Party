@@ -146,3 +146,16 @@ void bubbleSortList(liste *l){
     }
 }
 
+int nb_nouveaux_candidat(liste larc,Elementliste arc){
+    int i=0;
+    bool orig = false;
+    bool dest = false;
+    while(i<=larc.Tete && (!orig || !dest)){
+        if(arc.orig == larc.Tabliste[i].orig || arc.orig == larc.Tabliste[i].dest)
+            orig = true;
+        if(arc.dest == larc.Tabliste[i].orig || arc.dest == larc.Tabliste[i].dest)
+            dest =true;
+        i++;
+    }      
+    return !orig + !dest;
+}

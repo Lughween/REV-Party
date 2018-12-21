@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "liste.h"
 #include <time.h>
 #include <assert.h>
 #include <stdbool.h>
 #include "graphePython.h"
+#include "lecture_csv.h"
+#include "condorcet.h"
 
 #define TAILLE_MAX 1000
 int RandA_B(int a,int b){
@@ -245,6 +246,22 @@ void test_matrice(){
     printf("\n");
     affiche_t_mat_int_dyn(mat,stdout);
 }
+
+void test_nb_candidat(){
+    Elementliste arc;
+    liste larc;
+    createList(&larc);
+    int n;
+    printf("combien d'élement dans liste?\n");
+    scanf("%d",&n);
+    for(int i=0;i<n;i++){
+        saisie_element(&arc);
+        addFrontList(&larc,arc);
+    }
+    printf("element à rajouter?\n");
+    saisie_element(&arc);
+    printf("il y aura %d nouveaux candidat dans la liste\n",nb_nouveaux_candidat(larc,arc));
+}
 int main(int argc, char const *argv[])
 {   
     // test1();
@@ -253,8 +270,9 @@ int main(int argc, char const *argv[])
     // test3_csv();
     //test1_duelmat();
     //test2_duelmat();
-    test_duelmat_global();
+    //test_duelmat_global();
     //test_matrice();
     //test_duelmat_g();
+    test_nb_candidat();
 ;    return 0;
 }

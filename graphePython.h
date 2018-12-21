@@ -1,5 +1,4 @@
-#include "global.h"
-#include "condorcet.h"
+#include "liste.h"
 
 #define BASE_FILE "poltest.py"
 #define MAXCHAR 255
