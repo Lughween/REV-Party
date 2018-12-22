@@ -72,33 +72,31 @@ void csv_get_votes(char *vote_csv,t_mat_int_dyn *votes,int nb_candidats){
     fclose(csv);
 }
 
-void lire_csv(char *vote_csv, t_mat_int_dyn *votes,int nb_canditats){
+void csv_get_duels_mat(char *votes_csv,t_mat_int_dyn *duels_mat,int nb_candidats){
     FILE *csv = NULL;
-    csv = fopen(vote_csv,"r");
-    int i_ligne = 0;
+    csv = fopen(votes_csv,"r");
     int i_collonne = 0;
-    char ligne[TAILLE_MAX];
-    char *champ;
+    int i_ligne =0;
+    char ligne[TAILLE_MAX]; //chaine qui récupère la ligne
+    char *champ; 
     char *svptr;
     if(csv == NULL){
-        printf("err::FICHIER:%s ILLISIBLE !\n",vote_csv);
+        printf("err::FICHIER:%s ILLISIBLE !\n",votes_csv);
         exit(1);
     }
+
     while(fgets(ligne,TAILLE_MAX,csv) != NULL){
         del_jump(ligne);
         champ = strtok_r(ligne,DELIM,&svptr);
-        // saute le nombres de champ qu'il faut (selon l'offset)
-        for(int i=0;i<OFFSET-1;i++){
-            champ = strtok_r(NULL,DELIM,&svptr);
-        }
-        //pour chaque champ du csv le mettre dans la bonne structure
-        while(champ != NULL && i_collonne<nb_canditats){
-            champ = strtok_r(NULL, DELIM,&svptr);
-            if(i_ligne > 0){
-                votes->tab[i_ligne-1][i_collonne] = convertir_str_to_int(champ);}
+        i_collonne =0;
+        printf("champ lu :%s\n",champ);
+        while(champ != NULL && i_collonne < nb_candidats){
+                if(i_ligne>0){
+                    printf("champ lu :%s\n",champ);
+                    duels_mat->tab[i_ligne-1][i_collonne] = convertir_str_to_int(champ);}
+                    champ = strtok_r(NULL,DELIM,&svptr);
             i_collonne++;
         }
-        i_collonne=0;
         i_ligne++;
     }
     fclose(csv);

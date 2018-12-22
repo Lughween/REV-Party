@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "liste.h"
-#include "lecture_csv.h"
 #include <time.h>
 #include <assert.h>
 #include <stdbool.h>
+#include "graphePython.h"
+#include "lecture_csv.h"
+#include "condorcet.h"
 
 #define TAILLE_MAX 1000
 int RandA_B(int a,int b){
@@ -54,24 +55,24 @@ void test1(){
 }
 
 
-void test1_csv(){
-    FILE *testing = NULL;
-    testing = fopen("fichier_test/csv.tmp","w");
-    t_mat_int_dyn votes;
-    str_tab_dyn candidats;
-    creer_str_tab_dyn(&candidats,0);
-    creer_t_mat_int_dyn(&votes,0,0);
-    printf("test1=ok1\n");
-    lire_csv("fichier_test/test1.csv",&candidats,&votes);
-    affiche_str_tab(&candidats,testing);
-    affiche_t_mat_int_dyn(votes,testing);
-    printf("test1=ok2\n");
-    free_t_mat_int(&votes);
-    free_str_tab_dyn(&candidats);
-    fclose(testing);
-    assert(cmp_file("fichier_test/testcsv_1","fichier_test/csv.tmp"));
-    printf("test1:OK\n");
-}
+// void test1_csv(){
+//     FILE *testing = NULL;
+//     testing = fopen("fichier_test/csv.tmp","w");
+//     t_mat_int_dyn votes;
+//     str_tab_dyn candidats;
+//     creer_str_tab_dyn(&candidats,0);
+//     creer_t_mat_int_dyn(&votes,0,0);
+//     printf("test1=ok1\n");
+//     lire_csv("fichier_test/test1.csv",&candidats,&votes);
+//     affiche_str_tab(&candidats,testing);
+//     affiche_t_mat_int_dyn(votes,testing);
+//     printf("test1=ok2\n");
+//     free_t_mat_int(&votes);
+//     free_str_tab_dyn(&candidats);
+//     fclose(testing);
+//     assert(cmp_file("fichier_test/testcsv_1","fichier_test/csv.tmp"));
+//     printf("test1:OK\n");
+// }
 
 
 void test2_csv(){ //uniquement les candidats 5 candidats.
@@ -117,11 +118,187 @@ void test3_csv(){
     assert(cmp_file("fichier_test/testcsv_3","fichier_test/csv.tmp"));
     printf("test3:OK\n");
 }
+
+void str_test1(){
+    printf("0 1 2 2 3\n5 0 3 3 3\n6 4 0 3 3\n7 6 5 0 5\n6 6 5 3 0\n");
+}
+void test1_duelmat(){
+    str_tab_dyn candidats;
+    t_mat_int_dyn votes;
+
+    int nb_candidats = 5;
+    int nb_votants = 10;
+    char csv_test[] = "fichier_test/test3.csv";
+
+    creer_t_mat_int_dyn(&votes,nb_votants,nb_candidats);
+    creer_str_tab_dyn(&candidats,nb_candidats);
+    
+    printf("ok1\n");
+    csv_get_votes(csv_test,&votes,nb_candidats);
+    
+
+    t_mat_int_dyn duel_mat;
+    creer_duel_mat(&duel_mat,votes);
+    printf("ok2\n");
+    affiche_t_mat_int_dyn(duel_mat,stdout);
+    int vainqueur = vainqueur_condorcet(duel_mat);
+    csv_get_candidat(csv_test,&candidats);
+    if(vainqueur != -1)
+        printf("le vainqueur est : %s\n",candidats.tab[vainqueur]);
+    else
+        printf("il n'y à pas de vainqueur de condorcet :/ ");
+    // printf("Résultat attendus :\n");
+    // // str_test1();
+    // // liste l;
+    // // creer_arc_liste(duel_mat,&l);
+    // // dumpList(l,stdout);
+    // // genererPython(l,"graphe.py");
+    free_t_mat_int(&duel_mat);
+    free_str_tab_dyn(&candidats);
+    free_t_mat_int(&votes);
+    
+}
+
+void test3_duelmat(){
+    str_tab_dyn candidats;
+    t_mat_int_dyn votes;
+
+    int nb_candidats = 3;
+    int nb_votants = 5;
+    char csv_test[] = "fichier_test/test4.csv";
+
+    creer_t_mat_int_dyn(&votes,nb_votants,nb_candidats);
+    creer_str_tab_dyn(&candidats,nb_candidats);
+    
+    printf("ok1\n");
+    csv_get_votes(csv_test,&votes,nb_candidats);
+    csv_get_candidat(csv_test,&candidats);
+
+    t_mat_int_dyn duel_mat;
+    creer_duel_mat(&duel_mat,votes);
+    printf("ok2\n");
+    affiche_t_mat_int_dyn(duel_mat,stdout);
+    // printf("Résultat attendus :\n");
+    // str_test1();
+    liste l;
+    creer_arc_liste(duel_mat,&l);
+    dumpList(l,stdout);
+    genererPython(l,"graphe.py");
+    free_t_mat_int(&duel_mat);
+    free_str_tab_dyn(&candidats);
+    free_t_mat_int(&votes);
+    
+}
+void test_duelmat_global(){
+    str_tab_dyn candidats;
+    t_mat_int_dyn votes;
+
+    int nb_candidats = 8;
+    int nb_votants = 100;
+    system("python votation.py -i michel -v 100 -o fichier_test/test.csv");
+    char csv_test[] = "fichier_test/test.csv";
+
+    creer_t_mat_int_dyn(&votes,nb_votants,nb_candidats);
+    creer_str_tab_dyn(&candidats,nb_candidats);
+    
+    printf("ok1\n");
+    csv_get_votes(csv_test,&votes,nb_candidats);
+    csv_get_candidat(csv_test,&candidats);
+
+    t_mat_int_dyn duel_mat;
+    creer_duel_mat(&duel_mat,votes);
+    printf("ok2\n");
+    affiche_t_mat_int_dyn(duel_mat,stdout);
+    // printf("Résultat attendus :\n");
+    // str_test1();
+    liste l;
+    creer_arc_liste(duel_mat,&l);
+    bubbleSortList(&l);
+    dumpList(l,stdout);
+    printf("le vainqueur est: %d\n",vainqueur_condorcet(duel_mat));
+    printf("le vainqueur minmax est! %d\n",condorcet_minmax(duel_mat));
+    genererPython(l,"graphe.py");
+    // system("python2.7 graphe.py");
+    free_t_mat_int(&duel_mat);
+    free_str_tab_dyn(&candidats);
+    free_t_mat_int(&votes);
+    
+}
+
+void test_duelmat_g(){
+    int nb_candidats = 5;
+    char csv_test[] = "fichier_test/test_dm.csv";
+    t_mat_int_dyn duel_mat;
+    creer_t_mat_int_dyn(&duel_mat,nb_candidats,nb_candidats);
+    csv_get_duels_mat(csv_test,&duel_mat,nb_candidats);
+    printf("ok2\n");
+    affiche_t_mat_int_dyn(duel_mat,stdout);
+    liste l;
+    creer_arc_liste(duel_mat,&l);
+    dumpList(l,stdout);
+    genererPython(l,"graphe.py");
+    printf("le vainqueur est: %d\n",vainqueur_condorcet(duel_mat));
+    printf("le vainqueur minmax est! %d\n",condorcet_minmax(duel_mat));
+    printf("résultat attendu : -1;\n");
+    free_t_mat_int(&duel_mat);
+}
+
+void test_matrice(){
+    t_mat_int_dyn mat;
+    t_mat_int_dyn mat2;
+    creer_t_mat_int_dyn(&mat2,5,5);
+    creer_t_mat_int_dyn(&mat,10,10);
+    affiche_t_mat_int_dyn(mat,stdout);
+    printf("\n");
+    affiche_t_mat_int_dyn(mat2,stdout);
+    printf("\n");
+    affiche_t_mat_int_dyn(mat,stdout);
+}
+
+void test_nb_candidat(){
+    Elementliste arc;
+    liste larc;
+    createList(&larc);
+    int n;
+    printf("combien d'élement dans liste?\n");
+    scanf("%d",&n);
+    for(int i=0;i<n;i++){
+        saisie_element(&arc);
+        addFrontList(&larc,arc);
+    }
+    printf("element à rajouter?\n");
+    saisie_element(&arc);
+    printf("il y aura %d nouveaux candidat dans la liste\n",nb_nouveaux_candidat(larc,arc));
+}
+
+void test_condorcet_paires(){
+    int nb_candidats = 5;
+    char csv_test[] = "fichier_test/testPaires.csv";
+    t_mat_int_dyn duel_mat;
+    creer_t_mat_int_dyn(&duel_mat,nb_candidats,nb_candidats);
+    csv_get_duels_mat(csv_test,&duel_mat,nb_candidats);
+    printf("ok2\n");
+    affiche_t_mat_int_dyn(duel_mat,stdout);
+    liste l;
+    creer_arc_liste(duel_mat,&l);
+    dumpList(l,stdout);
+    genererPython(l,"graphe.py");
+    printf("le vainqueur est: %d\n",vainqueur_condorcet(duel_mat));
+    printf("le vainqueur minmax est! %d\n",condorcet_minmax(duel_mat));
+    printf("le vainqueur par paires est: %d\n",condorcet_paires_class(duel_mat));
+    free_t_mat_int(&duel_mat);
+}
 int main(int argc, char const *argv[])
 {   
-    test1();
-    test1_csv();
-    test2_csv();
-    test3_csv();
-    return 0;
+    // test1();
+    // test1_csv();
+    // test2_csv();
+    // test3_csv();
+    //test1_duelmat();
+    //test2_duelmat();
+    //test_duelmat_global();
+    //test_matrice();
+    //test_duelmat_g();
+    test_nb_candidat();
+;    return 0;
 }

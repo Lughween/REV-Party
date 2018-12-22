@@ -5,9 +5,9 @@
 #define listeSTAT
 
 #include "elementliste.h"
-#define DIMMAX 100 // taille maximale de la liste statique
+#define DIMMAX 1000 // taille maximale de la liste statique
 #define VIDE -1   // constante  pour indiquer que la liste est vide (par convention)
-#define ERRLOG "error.txt" //fichier de log pour les erreurs
+#define ERRLOG "error.log" //fichier de log pour les erreurs
 /* ----------------------------------
         Déclaration des types
    --------------------------------*/
@@ -20,9 +20,7 @@ struct liste {
 
 typedef struct liste liste;
 
-void errorMsg(char *msg);
-void shiftListUp(liste *p); //décale tout les elt d'une liste d'un cran vers l'avant.
-void shifListDown(liste *p); //idem mais vers l'arrière (le premier element seras suprimé !)
+void errorMsg(char *msg);//affiche un message d'erreur
 
 int nbEltList(liste lst); // nombre d'éléments
 void createList(liste *p); // renvoie une liste statique
@@ -39,4 +37,7 @@ void swapEltList(Elementliste *a,Elementliste *b); // échange deux éléments d
 void bubbleSortList(liste *p); // trie la liste
 void pickEltList(liste l,Elementliste *e,int index); // renvoie l'élément n° index
 bool belongEltList(liste p,Elementliste e); // true si l'élément est dans la liste
+// renvoi le nb de candidat que rajouterais l'arc
+//s'il était rajouter à la liste
+int nb_nouveaux_candidat(liste larc,Elementliste arc);
 #endif

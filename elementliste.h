@@ -13,5 +13,6 @@ void saisie_element(Elementliste *e);
 void copie_element(Elementliste *cible, Elementliste source);
 void afficher_element(Elementliste e,FILE *fp);
 bool cmp_elements(Elementliste e1,Elementliste e2);
+bool est_a_sup_b(Elementliste a,Elementliste b);
 
 #endif

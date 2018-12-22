@@ -21,7 +21,7 @@ bool fullList(liste p){
 }
 
 bool emptyList(liste p){
-    if(p.Tete = VIDE)
+    if(p.Tete == VIDE)
         return true;
     return false;
 }
@@ -29,7 +29,7 @@ bool emptyList(liste p){
 
 void shiftListUp(liste *p){
     if(fullList(*p)){
-        errorMsg("ShiftListUp:pille pleine");
+        errorMsg("ShiftListUp:pile pleine\n");
         return;
     }
     int i=p->Tete;
@@ -37,25 +37,18 @@ void shiftListUp(liste *p){
         copie_element(&p->Tabliste[i+1],p->Tabliste[i]);
         i--;
     }
-    if(!emptyList(*p))
-    {
-        p->Tete++;
-        p->nbElt++;
-    }
+    
         
 }
 
 void shifListDown(liste *p){
     if(emptyList(*p)){
-        errorMsg("shiftListDown:pile vide");
+        errorMsg("shiftListDown:pile vide\n");
         return;
     }
     for(int i=0;i<p->Tete;i++){
         copie_element(&p->Tabliste[i],p->Tabliste[i+1]);
     }
-    p->Tete--;
-    p->nbElt--;
-    
 }
 
 
@@ -67,7 +60,7 @@ void createList(liste *p){
 
 void addFrontList(liste *p, Elementliste e){
     if(p->Tete >= DIMMAX){
-        errorMsg("addFrontList:pile pleine");
+        errorMsg("addFrontList:pile pleine\n");
         return;
     }
     p->Tete ++;
@@ -77,24 +70,28 @@ void addFrontList(liste *p, Elementliste e){
 
 void addTailList(liste *p, Elementliste e){
     if(p->Tete >= DIMMAX){
-        errorMsg("addFrontList:pile pleine");
+        errorMsg("addFrontList:pile pleine\n");
         return;
     }
     shiftListUp(p);
+    p->Tete ++;
+    p->nbElt++;
     copie_element(&p->Tabliste[0],e);
 }
 
 void delTailList(liste *p){
-    if(emptyList){
-        errorMsg("delTailList:pile vide");
+    if(emptyList(*p)){
+        errorMsg("delTailList:pile vide\n");
         return;
     }
     shifListDown(p);
+    p->Tete--;
+    p->nbElt--;
 }
 
 void delFrontList(liste *p){
-    if(emptyList){
-        errorMsg("delTailList:pile vide");
+    if(emptyList(*p)){
+        errorMsg("delTailList:pile vide\n");
         return;
     }
     p->Tete--;
@@ -110,17 +107,17 @@ void TailList(liste p, Elementliste *e){
 }
 
 void dumpList(liste p, FILE *fp){
-    for(int i=0;i<p.Tete;i++){
-        fprintf(fp,"%d;",p.Tabliste[i]);
+    for(int i=0;i<=p.Tete;i++){
+        afficher_element(p.Tabliste[i],fp);
     }
 }
 
 void pickEltList(liste l,Elementliste *e,int index){
     if(index > l.Tete){
-        errorMsg("picKEltList:indice hors liste");
+        errorMsg("picKEltList:indice hors liste\n");
         return;
     }
-    copie(e,l.Tabliste[index]);
+    copie_element(e,l.Tabliste[index]);
 }
 
 bool belongEltList(liste p,Elementliste e){
@@ -133,5 +130,32 @@ bool belongEltList(liste p,Elementliste e){
     return false;
 }
 
+void swapEltList(Elementliste *a,Elementliste *b){
+    Elementliste tmp;
+    copie_element(&tmp,*a);
+    copie_element(a,*b);
+    copie_element(b,tmp);
+}
 
+void bubbleSortList(liste *l){
+    for(int i=l->Tete;i>=1;i--){
+        for(int j=0;j<i;j++){
+            if(!est_a_sup_b(l->Tabliste[j+1],l->Tabliste[j]))
+                swapEltList(&l->Tabliste[j+1],&l->Tabliste[j]);
+        }
+    }
+}
 
+int nb_nouveaux_candidat(liste larc,Elementliste arc){
+    int i=0;
+    bool orig = false;
+    bool dest = false;
+    while(i<=larc.Tete && (!orig || !dest)){
+        if(arc.orig == larc.Tabliste[i].orig || arc.orig == larc.Tabliste[i].dest)
+            orig = true;
+        if(arc.dest == larc.Tabliste[i].orig || arc.dest == larc.Tabliste[i].dest)
+            dest =true;
+        i++;
+    }      
+    return !orig + !dest;
+}
