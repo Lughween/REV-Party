@@ -97,11 +97,19 @@ void test3_csv(){
     creer_str_tab_dyn(&candidats,5);
     creer_t_mat_int_dyn(&votes,10,5);
     printf("test3=ok1\n");
+   
+    
     csv_get_votes("fichier_test/test3.csv",&votes,5);
     csv_get_candidat("fichier_test/test3.csv",&candidats);
-    affiche_str_tab(&candidats,testing);
+    affiche_str_tab(&candidats,stdout);
     printf("affiche1:OK!\n");
-    affiche_t_mat_int_dyn(votes,testing);
+    affiche_t_mat_int_dyn(votes,stdout);
+    printf("affiche2:OK!\n");
+    csv_get_candidat("fichier_test/test3.csv",&candidats);
+    csv_get_votes("fichier_test/test3.csv",&votes,5);
+    affiche_str_tab(&candidats,stdout);
+    printf("affiche1:OK!\n");
+    affiche_t_mat_int_dyn(votes,stdout);
     printf("affiche2:OK!\n");
     free_t_mat_int(&votes);
     free_str_tab_dyn(&candidats);
