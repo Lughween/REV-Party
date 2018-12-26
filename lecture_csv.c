@@ -19,7 +19,7 @@ int convertir_str_to_int(char *str){
 }
 
 
-void csv_get_candidat(char *vote_csv,str_tab_dyn *candidats){
+void csv_get_candidat(char *vote_csv,t_str_tab_dyn *candidats){
     FILE *csv = NULL;
     csv = fopen(vote_csv,"r");
     int i_collonne = 0;

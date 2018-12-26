@@ -1,0 +1,40 @@
+\hypertarget{condorcet_8h}{}\section{Référence du fichier condorcet.\+h}
+\label{condorcet_8h}\index{condorcet.\+h@{condorcet.\+h}}
+
+
+permet de trouver un vecteur de condorcet selon les méthodes schulzle, minmax et classement par paires  
+
+
+{\ttfamily \#include \char`\"{}utils\+\_\+sd.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}liste.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de condorcet.\+h\+:
+% FIG 0
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{condorcet_8h_a8f2595df1118318be77bcfce3996cd53}\label{condorcet_8h_a8f2595df1118318be77bcfce3996cd53}} 
+void {\bfseries creer\+\_\+duel\+\_\+mat} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} $\ast$duel\+\_\+mat, \hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} votes)
+\item 
+\mbox{\Hypertarget{condorcet_8h_aadabb4e8c8585e0debd71487cb1a1a9e}\label{condorcet_8h_aadabb4e8c8585e0debd71487cb1a1a9e}} 
+void {\bfseries creer\+\_\+arc\+\_\+liste} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} duels\+\_\+mat, \hyperlink{structliste}{liste} $\ast$liste\+\_\+arc)
+\item 
+\mbox{\Hypertarget{condorcet_8h_a18ef10929dd51c1bd06760f4e62ae92c}\label{condorcet_8h_a18ef10929dd51c1bd06760f4e62ae92c}} 
+int {\bfseries vainqueur\+\_\+condorcet} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} duels\+\_\+mat)
+\item 
+\mbox{\Hypertarget{condorcet_8h_a60adcb0ae0c1ebedc27e8d84ee294a37}\label{condorcet_8h_a60adcb0ae0c1ebedc27e8d84ee294a37}} 
+int {\bfseries condorcet\+\_\+minmax} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} creer\+\_\+duels\+\_\+mat)
+\item 
+\mbox{\Hypertarget{condorcet_8h_a5445d8d3be6c82713dcc9f8f7ca14977}\label{condorcet_8h_a5445d8d3be6c82713dcc9f8f7ca14977}} 
+int {\bfseries condorcet\+\_\+paires\+\_\+class} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} duels\+\_\+mat)
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+permet de trouver un vecteur de condorcet selon les méthodes schulzle, minmax et classement par paires 
+
+\begin{DoxyAuthor}{Auteur}
+Viala Ludovic 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+december 2018 
+\end{DoxyDate}

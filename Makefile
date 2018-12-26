@@ -1,9 +1,9 @@
-CFLAGS=-Wall -g -lm -L -lcircuit
+CFLAGS=-Wall -g -lm -L -libcircuit
 
 all: test
 
 test: test.o graphePython.o condorcet.o lecture_csv.o utils_sd.o liste.o elementliste.o
-	gcc -o test test.o liste.o graphePython.o condorcet.o lecture_csv.o utils_sd.o  elementliste.o $(CFLAGS)
+	gcc -o test test.o liste.o graphePython.o condorcet.o lecture_csv.o utils_sd.o elementliste.o $(CFLAGS)
 
 test.o: test.c
 	gcc -o test.o -c test.c $(CFLAGS)

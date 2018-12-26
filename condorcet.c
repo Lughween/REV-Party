@@ -1,6 +1,8 @@
 #include "condorcet.h"
 
+
 void creer_duel_mat(t_mat_int_dyn *duel_mat,t_mat_int_dyn votes){
+    // \brief crée une matrice de duel d'après une matrice contenant les ballots
     int nb_candidat = votes.nbCol;
     int nb_votant = votes.nbRows;
     int nb_win_A_on_B;//variable conptant combien de fois A est préférer à B 
@@ -125,11 +127,11 @@ int condorcet_paires_class(t_mat_int_dyn duels_mat){
     delFrontList(&larcFull);
     addFrontList(&larcConf,e);
     int nb_candidat = 2;
-
     while(!emptyList(larcFull)){
-        if(circuits(larcConf,nb_candidat))
-            delFrontList(&larcConf);
-
+        printf("ok1\n");
+        // if(circuits(larcConf,nb_candidat))
+        //     delFrontList(&larcConf);
+        // printf("ok2\n");
         headList(larcFull,&e);
         nb_candidat = nb_nouveaux_candidat(larcConf,e);
         delFrontList(&larcFull);

@@ -36,23 +36,23 @@ bool cmp_file(char *fich1,char *fich2){
     return true;
 }
 
-void test1(){
-    FILE *logz = NULL;
-    logz = fopen("tmp.tmp","w");
-    t_mat_char_star_dyn mat;
-    creer_t_mat_char_dyn(&mat,2,3);
-    mat.tab[0][0] = "jean";
-    mat.tab[0][1] = "paul";
-    mat.tab[0][2] = "michel";
-    mat.tab[1][0] = "3";
-    mat.tab[1][1] = "4";
-    mat.tab[1][2] = "5";
-    affiche_t_mat_char_star_dyn(mat,logz);
-    fclose(logz);
-    assert(cmp_file("fichier_test/test1","tmp.tmp"));
-    free_t_mat_char(&mat);
-    printf("test0:OK!\n");
-}
+// void test1(){
+//     FILE *logz = NULL;
+//     logz = fopen("tmp.tmp","w");
+//     t_mat_char_star_dyn mat;
+//     creer_t_mat_char_dyn(&mat,2,3);
+//     mat.tab[0][0] = "jean";
+//     mat.tab[0][1] = "paul";
+//     mat.tab[0][2] = "michel";
+//     mat.tab[1][0] = "3";
+//     mat.tab[1][1] = "4";
+//     mat.tab[1][2] = "5";
+//     affiche_t_mat_char_star_dyn(mat,logz);
+//     fclose(logz);
+//     assert(cmp_file("fichier_test/test1","tmp.tmp"));
+//     free_t_mat_char(&mat);
+//     printf("test0:OK!\n");
+// }
 
 
 // void test1_csv(){
@@ -78,7 +78,7 @@ void test1(){
 void test2_csv(){ //uniquement les candidats 5 candidats.
     FILE *testing = NULL;
     testing = fopen("fichier_test/csv.tmp","w");
-    str_tab_dyn candidats;
+    t_str_tab_dyn candidats;
     creer_str_tab_dyn(&candidats,5);
     printf("test2=ok1\n");
     csv_get_candidat("fichier_test/test2.csv",&candidats);
@@ -94,7 +94,7 @@ void test3_csv(){
     FILE *testing = NULL;
     testing = fopen("fichier_test/csv.tmp","w");
     t_mat_int_dyn votes;
-    str_tab_dyn candidats;
+    t_str_tab_dyn candidats;
     creer_str_tab_dyn(&candidats,5);
     creer_t_mat_int_dyn(&votes,10,5);
     printf("test3=ok1\n");
@@ -112,6 +112,9 @@ void test3_csv(){
     printf("affiche1:OK!\n");
     affiche_t_mat_int_dyn(votes,stdout);
     printf("affiche2:OK!\n");
+    del_col_mat(&votes,2);
+    printf("sup col:2\n");
+    affiche_t_mat_int_dyn(votes,stdout);
     free_t_mat_int(&votes);
     free_str_tab_dyn(&candidats);
     fclose(testing);
@@ -123,7 +126,7 @@ void str_test1(){
     printf("0 1 2 2 3\n5 0 3 3 3\n6 4 0 3 3\n7 6 5 0 5\n6 6 5 3 0\n");
 }
 void test1_duelmat(){
-    str_tab_dyn candidats;
+    t_str_tab_dyn candidats;
     t_mat_int_dyn votes;
 
     int nb_candidats = 5;
@@ -160,7 +163,7 @@ void test1_duelmat(){
 }
 
 void test3_duelmat(){
-    str_tab_dyn candidats;
+    t_str_tab_dyn candidats;
     t_mat_int_dyn votes;
 
     int nb_candidats = 3;
@@ -190,7 +193,7 @@ void test3_duelmat(){
     
 }
 void test_duelmat_global(){
-    str_tab_dyn candidats;
+    t_str_tab_dyn candidats;
     t_mat_int_dyn votes;
 
     int nb_candidats = 8;
@@ -284,21 +287,57 @@ void test_condorcet_paires(){
     dumpList(l,stdout);
     genererPython(l,"graphe.py");
     printf("le vainqueur est: %d\n",vainqueur_condorcet(duel_mat));
-    printf("le vainqueur minmax est! %d\n",condorcet_minmax(duel_mat));
+    printf("le vainqueur minmax est :%d\n",condorcet_minmax(duel_mat));
     printf("le vainqueur par paires est: %d\n",condorcet_paires_class(duel_mat));
     free_t_mat_int(&duel_mat);
 }
+
+void test_str_tab(){
+    int n;
+    printf("quelle dimension?:\n");
+    scanf("%d",&n);
+    t_str_tab_dyn test;
+    char str[255];
+    creer_str_tab_dyn(&test,n);
+    for(int i=0;i<n;i++){
+        scanf("%s",str);
+        strcpy(test.tab[i],str);
+    }
+    printf("affichage :\n");
+    affiche_str_tab(&test,stdout);
+    printf("supression indice?\n");
+    scanf("%d",&n);
+    del_str_strTab(&test,n);
+    affiche_str_tab(&test,stdout);
+}
+
+// void test_int(){
+//     int n;
+//     printf("quelle dimension?:\n");
+//     scanf("%d",&n);
+//     t_mat_int_dyn;
+//     creer_t_tab_int_dyn(&l,n);
+//     for(int i=0;i<n;i++)
+//         scanf("%d",&l.tab[i]);
+//     affiche_t_tab_int_dyn(l,stdout);
+//     printf("supression indice?\n");
+//     scanf("%d",&n);
+    
+// }
 int main(int argc, char const *argv[])
 {   
     // test1();
     // test1_csv();
     // test2_csv();
-    // test3_csv();
+    test3_csv();
     //test1_duelmat();
     //test2_duelmat();
     //test_duelmat_global();
     //test_matrice();
     //test_duelmat_g();
-    test_nb_candidat();
-;    return 0;
+    //test_nb_candidat();
+    //test_condorcet_paires();
+    //test_str_tab();
+    //test_int();
+    return 0;
 }
