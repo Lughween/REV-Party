@@ -26,6 +26,8 @@ int {\bfseries condorcet\+\_\+minmax} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\
 \item 
 \mbox{\Hypertarget{condorcet_8h_a5445d8d3be6c82713dcc9f8f7ca14977}\label{condorcet_8h_a5445d8d3be6c82713dcc9f8f7ca14977}} 
 int {\bfseries condorcet\+\_\+paires\+\_\+class} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} duels\+\_\+mat)
+\item 
+bool \hyperlink{condorcet_8h_aeaca0cd2065bbc6359c7534163aa714e}{circuits} (\hyperlink{structliste}{liste} larc, int nb\+Candidats)
 \end{DoxyCompactItemize}
 
 
@@ -38,3 +40,20 @@ Viala Ludovic
 \begin{DoxyDate}{Date}
 december 2018 
 \end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{condorcet_8h_aeaca0cd2065bbc6359c7534163aa714e}\label{condorcet_8h_aeaca0cd2065bbc6359c7534163aa714e}} 
+\index{condorcet.\+h@{condorcet.\+h}!circuits@{circuits}}
+\index{circuits@{circuits}!condorcet.\+h@{condorcet.\+h}}
+\subsubsection{\texorpdfstring{circuits()}{circuits()}}
+{\footnotesize\ttfamily bool circuits (\begin{DoxyParamCaption}\item[{\hyperlink{structliste}{liste}}]{larc,  }\item[{int}]{nb\+Candidats }\end{DoxyParamCaption})}
+
+ajouter un paramètre de dimension pour s\textquotesingle{}affranchir de la variable globale nb\+Candidats. utiliser pick\+Elt cherche si le graphe contient un circuit avec tab de marquage et tab de mémoire des arcs 
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\tt in}  & {\em la} & liste des arcs. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+\+: true, il y a un circuit, false sinon 
+\end{DoxyReturn}

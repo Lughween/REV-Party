@@ -30,7 +30,7 @@ struct \hyperlink{structs__str__tab__dyn}{s\+\_\+str\+\_\+tab\+\_\+dyn}
 \#define {\bfseries O\+F\+F\+S\+ET}~3
 \item 
 \mbox{\Hypertarget{utils__sd_8h_a5198bfe07a3c13e2a5b3db357645e8f1}\label{utils__sd_8h_a5198bfe07a3c13e2a5b3db357645e8f1}} 
-\#define {\bfseries C\+H\+\_\+\+M\+AX}~100
+\#define {\bfseries C\+H\+\_\+\+M\+AX}~255
 \item 
 \mbox{\Hypertarget{utils__sd_8h_a3acffbd305ee72dcd4593c0d8af64a4f}\label{utils__sd_8h_a3acffbd305ee72dcd4593c0d8af64a4f}} 
 \#define {\bfseries M\+IN}(a,  b)~(((a)$<$(b))?(a)\+:(b))
@@ -50,8 +50,8 @@ typedef struct \hyperlink{structs__mat__dyn}{s\+\_\+mat\+\_\+dyn} {\bfseries t\+
 \mbox{\Hypertarget{utils__sd_8h_a6246790d2f4187545380406f21036c05}\label{utils__sd_8h_a6246790d2f4187545380406f21036c05}} 
 typedef struct \hyperlink{structs__mat__char__dyn}{s\+\_\+mat\+\_\+char\+\_\+dyn} {\bfseries t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn}
 \item 
-\mbox{\Hypertarget{utils__sd_8h_a63c8511861debe5947135038419e9d53}\label{utils__sd_8h_a63c8511861debe5947135038419e9d53}} 
-typedef struct \hyperlink{structs__str__tab__dyn}{s\+\_\+str\+\_\+tab\+\_\+dyn} {\bfseries str\+\_\+tab\+\_\+dyn}
+\mbox{\Hypertarget{utils__sd_8h_a165d4dce304d28fcc0ecb36544232424}\label{utils__sd_8h_a165d4dce304d28fcc0ecb36544232424}} 
+typedef struct \hyperlink{structs__str__tab__dyn}{s\+\_\+str\+\_\+tab\+\_\+dyn} {\bfseries t\+\_\+str\+\_\+tab\+\_\+dyn}
 \end{DoxyCompactItemize}
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
@@ -65,9 +65,6 @@ int $\ast$$\ast$ {\bfseries creer\+\_\+mat\+\_\+int} (int nb\+Rows, int nb\+Col)
 \mbox{\Hypertarget{utils__sd_8h_a2406f0b55dc0bcdb660e0333ca1f1074}\label{utils__sd_8h_a2406f0b55dc0bcdb660e0333ca1f1074}} 
 char $\ast$$\ast$ {\bfseries creer\+\_\+tab\+\_\+str} (int dim)
 \item 
-\mbox{\Hypertarget{utils__sd_8h_aca4178d9b39c4446fa5d48e5abb39221}\label{utils__sd_8h_aca4178d9b39c4446fa5d48e5abb39221}} 
-char $\ast$$\ast$$\ast$ {\bfseries creer\+\_\+mat\+\_\+char} (int nb\+Rows, int nb\+Col)
-\item 
 \mbox{\Hypertarget{utils__sd_8h_a56e7e1e1bace7d9a1e45a5eec5edbef6}\label{utils__sd_8h_a56e7e1e1bace7d9a1e45a5eec5edbef6}} 
 void {\bfseries affiche\+\_\+tab\+\_\+int} (int $\ast$tab, int dim, F\+I\+LE $\ast$logfp)
 \item 
@@ -77,17 +74,11 @@ void {\bfseries creer\+\_\+t\+\_\+mat\+\_\+int\+\_\+dyn} (\hyperlink{structs__ma
 \mbox{\Hypertarget{utils__sd_8h_ae4c296adb52aa81c3889c3880b7bcff2}\label{utils__sd_8h_ae4c296adb52aa81c3889c3880b7bcff2}} 
 void {\bfseries creer\+\_\+t\+\_\+tab\+\_\+int\+\_\+dyn} (\hyperlink{structs__tab__dyn}{t\+\_\+tab\+\_\+int\+\_\+dyn} $\ast$st\+Tab, int dim)
 \item 
-\mbox{\Hypertarget{utils__sd_8h_a07140234a86cbfb2db18c3c86e10c833}\label{utils__sd_8h_a07140234a86cbfb2db18c3c86e10c833}} 
-void {\bfseries creer\+\_\+t\+\_\+mat\+\_\+char\+\_\+dyn} (\hyperlink{structs__mat__char__dyn}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn} $\ast$s\+\_\+tabmots, int nb\+Rows, int nb\+Col)
-\item 
-\mbox{\Hypertarget{utils__sd_8h_a4ef929a1067828f81e1be7529b74ea72}\label{utils__sd_8h_a4ef929a1067828f81e1be7529b74ea72}} 
-void {\bfseries creer\+\_\+str\+\_\+tab\+\_\+dyn} (\hyperlink{structs__str__tab__dyn}{str\+\_\+tab\+\_\+dyn} $\ast$chaines, int dim)
+\mbox{\Hypertarget{utils__sd_8h_acea6ab713bc189b50482cbec196d1000}\label{utils__sd_8h_acea6ab713bc189b50482cbec196d1000}} 
+void {\bfseries creer\+\_\+str\+\_\+tab\+\_\+dyn} (\hyperlink{structs__str__tab__dyn}{t\+\_\+str\+\_\+tab\+\_\+dyn} $\ast$chaines, int dim)
 \item 
 \mbox{\Hypertarget{utils__sd_8h_a540746e1dd10fe900c6acddcfb7d26b6}\label{utils__sd_8h_a540746e1dd10fe900c6acddcfb7d26b6}} 
 void {\bfseries affiche\+\_\+t\+\_\+tab\+\_\+int\+\_\+dyn} (\hyperlink{structs__tab__dyn}{t\+\_\+tab\+\_\+int\+\_\+dyn} t\+\_\+tab, F\+I\+LE $\ast$logfp)
-\item 
-\mbox{\Hypertarget{utils__sd_8h_aec48dc5361c3f0587263edda1f51723c}\label{utils__sd_8h_aec48dc5361c3f0587263edda1f51723c}} 
-void {\bfseries affiche\+\_\+t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn} (\hyperlink{structs__mat__char__dyn}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn} t\+\_\+tabmots, F\+I\+LE $\ast$logfp)
 \item 
 \mbox{\Hypertarget{utils__sd_8h_a2a5de127c5fc987fc1207835707f65a4}\label{utils__sd_8h_a2a5de127c5fc987fc1207835707f65a4}} 
 void {\bfseries affiche\+\_\+t\+\_\+mat\+\_\+int\+\_\+dyn} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} t\+\_\+tab, F\+I\+LE $\ast$logfp)
@@ -95,8 +86,8 @@ void {\bfseries affiche\+\_\+t\+\_\+mat\+\_\+int\+\_\+dyn} (\hyperlink{structs__
 \mbox{\Hypertarget{utils__sd_8h_a0c2f4bf1b114391cb819274896104a0e}\label{utils__sd_8h_a0c2f4bf1b114391cb819274896104a0e}} 
 void {\bfseries affiche\+\_\+mat\+\_\+int} (int $\ast$$\ast$duels\+\_\+mat, int nb\+Rows, int nb\+Col, F\+I\+LE $\ast$logfp)
 \item 
-\mbox{\Hypertarget{utils__sd_8h_a88774c448997b982b0a33ace28c1c9ad}\label{utils__sd_8h_a88774c448997b982b0a33ace28c1c9ad}} 
-void {\bfseries affiche\+\_\+str\+\_\+tab} (\hyperlink{structs__str__tab__dyn}{str\+\_\+tab\+\_\+dyn} $\ast$tab, F\+I\+LE $\ast$logfp)
+\mbox{\Hypertarget{utils__sd_8h_a849503c3ce07049c4c7af5f948d0ca35}\label{utils__sd_8h_a849503c3ce07049c4c7af5f948d0ca35}} 
+void {\bfseries affiche\+\_\+str\+\_\+tab} (\hyperlink{structs__str__tab__dyn}{t\+\_\+str\+\_\+tab\+\_\+dyn} $\ast$tab, F\+I\+LE $\ast$logfp)
 \item 
 \mbox{\Hypertarget{utils__sd_8h_a941a572f313edd85907218084b61371a}\label{utils__sd_8h_a941a572f313edd85907218084b61371a}} 
 void {\bfseries init\+\_\+tab\+\_\+int} (int $\ast$tab, int dim, int valeur)
@@ -107,26 +98,23 @@ void {\bfseries init\+\_\+mat\+\_\+int} (int $\ast$$\ast$mat, int nb\+Rows, int 
 \mbox{\Hypertarget{utils__sd_8h_ae7594eec4d2b6dc86f4725e281671a44}\label{utils__sd_8h_ae7594eec4d2b6dc86f4725e281671a44}} 
 void {\bfseries init\+\_\+mat\+\_\+char} (char $\ast$$\ast$$\ast$mat, int nb\+Row, int nb\+Col, char $\ast$val)
 \item 
-\mbox{\Hypertarget{utils__sd_8h_ac30f9f5743c7c6ed835b69e0405e7ca1}\label{utils__sd_8h_ac30f9f5743c7c6ed835b69e0405e7ca1}} 
-bool {\bfseries t\+\_\+cmp\+\_\+mat\+\_\+int} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} t1, \hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} t2)
-\item 
-\mbox{\Hypertarget{utils__sd_8h_a40936c0a738c0f79e94dadfc2b146036}\label{utils__sd_8h_a40936c0a738c0f79e94dadfc2b146036}} 
-bool {\bfseries t\+\_\+cmp\+\_\+tab\+\_\+int} (\hyperlink{structs__tab__dyn}{t\+\_\+tab\+\_\+int\+\_\+dyn} t1, \hyperlink{structs__tab__dyn}{t\+\_\+tab\+\_\+int\+\_\+dyn} t2)
-\item 
 \mbox{\Hypertarget{utils__sd_8h_a9d0544268f26fbfe9c5df8a51afc5cca}\label{utils__sd_8h_a9d0544268f26fbfe9c5df8a51afc5cca}} 
 void {\bfseries free\+\_\+t\+\_\+mat\+\_\+int} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} $\ast$t)
 \item 
 \mbox{\Hypertarget{utils__sd_8h_afa214e598201540f9572d52274242ac6}\label{utils__sd_8h_afa214e598201540f9572d52274242ac6}} 
 void {\bfseries free\+\_\+t\+\_\+tab\+\_\+int} (\hyperlink{structs__tab__dyn}{t\+\_\+tab\+\_\+int\+\_\+dyn} $\ast$t)
 \item 
-\mbox{\Hypertarget{utils__sd_8h_a68c33864a893282b8f55f756f3db4bfc}\label{utils__sd_8h_a68c33864a893282b8f55f756f3db4bfc}} 
-void {\bfseries free\+\_\+str\+\_\+tab\+\_\+dyn} (\hyperlink{structs__str__tab__dyn}{str\+\_\+tab\+\_\+dyn} $\ast$t)
+\mbox{\Hypertarget{utils__sd_8h_a0224a7ec904818e1a9cebacfd208658a}\label{utils__sd_8h_a0224a7ec904818e1a9cebacfd208658a}} 
+void {\bfseries free\+\_\+str\+\_\+tab\+\_\+dyn} (\hyperlink{structs__str__tab__dyn}{t\+\_\+str\+\_\+tab\+\_\+dyn} $\ast$t)
 \item 
-\mbox{\Hypertarget{utils__sd_8h_a63774c0dfa280a42f1f7c2f02ea67d54}\label{utils__sd_8h_a63774c0dfa280a42f1f7c2f02ea67d54}} 
-void {\bfseries free\+\_\+t\+\_\+mat\+\_\+char} (\hyperlink{structs__mat__char__dyn}{t\+\_\+mat\+\_\+char\+\_\+star\+\_\+dyn} $\ast$t)
+\mbox{\Hypertarget{utils__sd_8h_a4c6d027034cf9b3703f9041f45db3795}\label{utils__sd_8h_a4c6d027034cf9b3703f9041f45db3795}} 
+void {\bfseries add\+\_\+str\+\_\+str\+Tab} (\hyperlink{structs__str__tab__dyn}{t\+\_\+str\+\_\+tab\+\_\+dyn} $\ast$t, int indice, char $\ast$str)
 \item 
-\mbox{\Hypertarget{utils__sd_8h_a8923fa85c825bf32f5ccca5ea96f0399}\label{utils__sd_8h_a8923fa85c825bf32f5ccca5ea96f0399}} 
-void {\bfseries add\+\_\+str\+\_\+str\+Tab} (\hyperlink{structs__str__tab__dyn}{str\+\_\+tab\+\_\+dyn} $\ast$t, int indice, char $\ast$)
+\mbox{\Hypertarget{utils__sd_8h_a677fff94f239a9d0e9f9a0dc1499fc3b}\label{utils__sd_8h_a677fff94f239a9d0e9f9a0dc1499fc3b}} 
+void {\bfseries del\+\_\+str\+\_\+str\+Tab} (\hyperlink{structs__str__tab__dyn}{t\+\_\+str\+\_\+tab\+\_\+dyn} $\ast$t, int indice)
+\item 
+\mbox{\Hypertarget{utils__sd_8h_a63d33b3e9aab5f0be9c9056497d1afe9}\label{utils__sd_8h_a63d33b3e9aab5f0be9c9056497d1afe9}} 
+void {\bfseries del\+\_\+col\+\_\+mat} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} $\ast$t, int i\+\_\+col)
 \end{DoxyCompactItemize}
 
 

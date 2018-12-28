@@ -59,10 +59,10 @@ void affiche_tab_int(int *tab,int dim, FILE *logfp);
 
 void creer_t_mat_int_dyn(t_mat_int_dyn *stTab,int nbRows,int nbCol); // utilise la struct
 void creer_t_tab_int_dyn(t_tab_int_dyn *stTab,int dim); // idem
-//void creer_t_mat_char_dyn(t_mat_char_star_dyn * s_tabmots,int nbRows, int nbCol);
+///void creer_t_mat_char_dyn(t_mat_char_star_dyn * s_tabmots,int nbRows, int nbCol);
 void creer_str_tab_dyn(t_str_tab_dyn *chaines,int dim);
 void affiche_t_tab_int_dyn(t_tab_int_dyn t_tab, FILE *logfp);
-//void affiche_t_mat_char_star_dyn(t_mat_char_star_dyn t_tabmots, FILE *logfp);
+///void affiche_t_mat_char_star_dyn(t_mat_char_star_dyn t_tabmots, FILE *logfp);
 void affiche_t_mat_int_dyn(t_mat_int_dyn t_tab, FILE *logfp);
 void affiche_mat_int(int **duels_mat,int nbRows,int nbCol,FILE *logfp);
 void affiche_str_tab(t_str_tab_dyn *tab,FILE *logfp);
@@ -81,5 +81,7 @@ void free_str_tab_dyn(t_str_tab_dyn *t);
 void add_str_strTab(t_str_tab_dyn *t,int indice,char *str);
 void del_str_strTab(t_str_tab_dyn *t,int indice);
 void del_col_mat(t_mat_int_dyn *t,int i_col);
+
+int i_max_t_tab(int *t);
 
 #endif

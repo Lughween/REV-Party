@@ -191,3 +191,4 @@ void del_col_mat(t_mat_int_dyn *t,int i_col){
     }
     t->nbCol--;
 }
+

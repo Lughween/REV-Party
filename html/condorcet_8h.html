@@ -96,12 +96,50 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>condorcet_minmax</b> (
 <tr class="memitem:a5445d8d3be6c82713dcc9f8f7ca14977"><td class="memItemLeft" align="right" valign="top"><a id="a5445d8d3be6c82713dcc9f8f7ca14977"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>condorcet_paires_class</b> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> duels_mat)</td></tr>
 <tr class="separator:a5445d8d3be6c82713dcc9f8f7ca14977"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaca0cd2065bbc6359c7534163aa714e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="condorcet_8h.html#aeaca0cd2065bbc6359c7534163aa714e">circuits</a> (<a class="el" href="structliste.html">liste</a> larc, int nbCandidats)</td></tr>
+<tr class="separator:aeaca0cd2065bbc6359c7534163aa714e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>permet de trouver un vecteur de condorcet selon les méthodes schulzle, minmax et classement par paires </p>
 <dl class="section author"><dt>Auteur</dt><dd>Viala Ludovic </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>december 2018 </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="aeaca0cd2065bbc6359c7534163aa714e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaca0cd2065bbc6359c7534163aa714e">&#9670;&nbsp;</a></span>circuits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool circuits </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structliste.html">liste</a>&#160;</td>
+          <td class="paramname"><em>larc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nbCandidats</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>ajouter un paramètre de dimension pour s'affranchir de la variable globale nbCandidats. utiliser pickElt cherche si le graphe contient un circuit avec tab de marquage et tab de mémoire des arcs </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">la</td><td>liste des arcs. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>: true, il y a un circuit, false sinon </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Généré par &#160;<a href="http://www.doxygen.org/index.html">
