@@ -34,10 +34,10 @@ void csv_get_candidat(char *vote_csv,t_str_tab_dyn *candidats){
     del_jump(ligne);
     champ = strtok_r(ligne,DELIM,&svptr);
     for(int i=0;i<OFFSET-1;i++){champ = strtok_r(NULL,DELIM,&svptr);}//saut des champ inutiles
-
+    printf("candidats.dim:%d\n",candidats->dim);
     while(champ != NULL && i_collonne<candidats->dim){
         champ = strtok_r(NULL,DELIM,&svptr);
-        candidats->tab[i_collonne] = champ;
+        strcpy(candidats->tab[i_collonne],champ);
         i_collonne++;
     }
     fclose(csv);

@@ -3,7 +3,7 @@
 /****************************création***************************/
 
 int *creer_tab_int(int dim){
-    int *tab = malloc(dim*sizeof(int));
+    int *tab = calloc(dim,sizeof(int));
     return tab;
 }
 
@@ -172,7 +172,6 @@ void del_str_strTab(t_str_tab_dyn *t,int indice){
     int taille = --t->dim;
     char str[CH_MAX];
     for(int i=taille-1;i>=indice;i--){
-        printf("i:%d;taille:%d\n",i,taille);
         strcpy(str,t->tab[i+1]);
         strcpy(t->tab[i],str);
     }

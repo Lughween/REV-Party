@@ -14,9 +14,9 @@ void creer_duel_mat(t_mat_int_dyn *duel_mat,t_mat_int_dyn votes){
             nb_win_B_on_A =0;
             if(A!=B)
                 for(int votant =0;votant<nb_votant;votant++){
-                    if(votes.tab[votant][A] > votes.tab[votant][B]) //si A est préférer à B 
+                    if(votes.tab[votant][A] < votes.tab[votant][B]) //si A est préférer à B 
                         nb_win_A_on_B++; 
-                    else if(votes.tab[votant][A] < votes.tab[votant][B]) // sinon si inverse sinon rien
+                    else if(votes.tab[votant][A] > votes.tab[votant][B]) // sinon si inverse sinon rien
                         nb_win_B_on_A++;
                 }
             duel_mat->tab[A][B] = nb_win_A_on_B;
@@ -29,13 +29,13 @@ void creer_arc_liste(t_mat_int_dyn duels_mat,liste *liste_arc){
     Elementliste e;
     for(int i=0;i<duels_mat.nbRows;i++){
         for(int j=0;j<i;j++){
-            if(duels_mat.tab[i][j] > duels_mat.tab[j][i]){
+            if(duels_mat.tab[i][j] < duels_mat.tab[j][i]){
                 e.orig = i;
                 e.dest = j;
                 e.poids = duels_mat.tab[i][j];
                 addFrontList(liste_arc,e);
             }
-            else if(duels_mat.tab[i][j] < duels_mat.tab[j][i])
+            else if(duels_mat.tab[i][j] > duels_mat.tab[j][i])
             {
                 e.orig = j;
                 e.dest = i;
@@ -51,13 +51,13 @@ void creer_liste_arc_paire(t_mat_int_dyn duels_mat,liste *liste_arc){
      Elementliste e;
     for(int i=0;i<duels_mat.nbRows;i++){
         for(int j=0;j<i;j++){
-            if(duels_mat.tab[i][j] > duels_mat.tab[j][i]){
+            if(duels_mat.tab[i][j] < duels_mat.tab[j][i]){
                 e.orig = i;
                 e.dest = j;
                 e.poids = duels_mat.tab[i][j] - duels_mat.tab[j][i];
                 addFrontList(liste_arc,e);
             }
-            else if(duels_mat.tab[i][j] < duels_mat.tab[j][i])
+            else if(duels_mat.tab[i][j] > duels_mat.tab[j][i])
             {
                 e.orig = j;
                 e.dest = i;

@@ -6,6 +6,7 @@
 #include "graphePython.h"
 #include "lecture_csv.h"
 #include "condorcet.h"
+#include "vote_UniAlt.h"
 
 #define TAILLE_MAX 1000
 int RandA_B(int a,int b){
@@ -181,6 +182,10 @@ void test3_duelmat(){
     creer_duel_mat(&duel_mat,votes);
     printf("ok2\n");
     affiche_t_mat_int_dyn(duel_mat,stdout);
+    affiche_str_tab(&candidats,stdout);
+    printf("del candidat 1\n");
+    del_str_strTab(&candidats,1);
+    affiche_str_tab(&candidats,stdout);
     // printf("Résultat attendus :\n");
     // str_test1();
     liste l;
@@ -311,27 +316,35 @@ void test_str_tab(){
     affiche_str_tab(&test,stdout);
 }
 
-// void test_int(){
-//     int n;
-//     printf("quelle dimension?:\n");
-//     scanf("%d",&n);
-//     t_mat_int_dyn;
-//     creer_t_tab_int_dyn(&l,n);
-//     for(int i=0;i<n;i++)
-//         scanf("%d",&l.tab[i]);
-//     affiche_t_tab_int_dyn(l,stdout);
-//     printf("supression indice?\n");
-//     scanf("%d",&n);
-    
-// }
+
+void test_uniAlt(){
+
+    t_mat_int_dyn votes;
+    t_str_tab_dyn candidats;
+    creer_str_tab_dyn(&candidats,5);
+    creer_t_mat_int_dyn(&votes,10,5);
+    printf("test3=ok1\n");
+    printf("affiche2:OK!\n");
+    csv_get_candidat("fichier_test/test3.csv",&candidats);
+    csv_get_votes("fichier_test/test3.csv",&votes,5);
+    affiche_str_tab(&candidats,stdout);
+    printf("affiche1:OK!\n");
+    affiche_t_mat_int_dyn(votes,stdout);
+    printf("affiche2:OK!\n");
+    printf("le vainqueur par uninominal 1 est : %s\n",uninominal1(votes,candidats));
+    printf("le vainqueur par uninominal 2 est : %s\n",uninominal2(votes,candidats));
+    free_t_mat_int(&votes);
+    free_str_tab_dyn(&candidats);
+}
 int main(int argc, char const *argv[])
 {   
     // test1();
     // test1_csv();
     // test2_csv();
-    test3_csv();
+    //test3_csv();
     //test1_duelmat();
     //test2_duelmat();
+    //test3_duelmat();
     //test_duelmat_global();
     //test_matrice();
     //test_duelmat_g();
@@ -339,5 +352,9 @@ int main(int argc, char const *argv[])
     //test_condorcet_paires();
     //test_str_tab();
     //test_int();
+    test_uniAlt();
+    int t[5] = {4,4,2,0,3};
+    printf("i_max = %d\n",i_min_tab(t,5));
+    printf("attendu : 4\n");
     return 0;
 }

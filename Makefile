@@ -2,8 +2,8 @@ CFLAGS=-Wall -g -lm -L -libcircuit
 
 all: test
 
-test: test.o graphePython.o condorcet.o lecture_csv.o utils_sd.o liste.o elementliste.o
-	gcc -o test test.o liste.o graphePython.o condorcet.o lecture_csv.o utils_sd.o elementliste.o $(CFLAGS)
+test: test.o graphePython.o condorcet.o lecture_csv.o utils_sd.o liste.o elementliste.o vote_UniAlt.o
+	gcc -o test test.o liste.o graphePython.o condorcet.o lecture_csv.o utils_sd.o elementliste.o vote_UniAlt.o $(CFLAGS)
 
 test.o: test.c
 	gcc -o test.o -c test.c $(CFLAGS)
@@ -25,8 +25,8 @@ elementliste.o: elementliste.c
 
 liste.o: liste.c
 	gcc -o liste.o -c liste.c $(CFLAGS)
-
-
+vote_uniAlt.o: vote_UniAlt.c
+	gcc -o vote_uniAlt.o -c vote_UniAlt.c $(CFLAGS)
 
 clean:
 	rm -rf *.o
