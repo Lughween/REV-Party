@@ -91,12 +91,14 @@ void affiche_str_tab(t_str_tab_dyn *tab,FILE *logfp){
 // }
 /****************************Initialisation***************************/
 void init_tab_int(int *tab,int dim,int valeur){
+    printf("here\n");
     for(int i=0;i<dim;i++){
         tab[i] = valeur;
     }
 }
 
 void init_mat_int(int **mat, int nbRows,int nbCol,int val){
+    printf("here2\n");
     for(int i=0;i<nbRows;i++){
         init_tab_int(mat[i],nbCol,val);
     }
@@ -171,7 +173,7 @@ void add_str_strTab(t_str_tab_dyn *t,int indice,char *str){
 void del_str_strTab(t_str_tab_dyn *t,int indice){
     int taille = --t->dim;
     char str[CH_MAX];
-    for(int i=taille-1;i>=indice;i--){
+    for(int i=indice;i<taille;i++){
         strcpy(str,t->tab[i+1]);
         strcpy(t->tab[i],str);
     }
@@ -183,11 +185,10 @@ void del_str_strTab(t_str_tab_dyn *t,int indice){
 // }
 void del_col_mat(t_mat_int_dyn *t,int i_col){
     int nb_col = t->nbCol;
+    t->nbCol--;
     for(int i=0;i<t->nbRows;i++){
-        for(int j=nb_col-2;j>=i_col;j--){
+        for(int j=i_col;j<nb_col;j++){
             t->tab[i][j] = t->tab[i][j+1];
         }
     }
-    t->nbCol--;
 }
-

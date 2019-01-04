@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include "global.h" ///
 #include "liste.h" ///
+#include "utils_sd.h"
 
 // pour la recherche de circuit
 #define LIBRE -1

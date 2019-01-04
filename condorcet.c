@@ -50,18 +50,18 @@ void creer_arc_liste(t_mat_int_dyn duels_mat,liste *liste_arc){
 void creer_liste_arc_paire(t_mat_int_dyn duels_mat,liste *liste_arc){
      Elementliste e;
     for(int i=0;i<duels_mat.nbRows;i++){
-        for(int j=0;j<i;j++){
+        for(int j=0;j<duels_mat.nbCol;j++){
             if(duels_mat.tab[i][j] < duels_mat.tab[j][i]){
                 e.orig = i;
                 e.dest = j;
-                e.poids = duels_mat.tab[i][j] - duels_mat.tab[j][i];
+                e.poids = duels_mat.tab[j][i] - duels_mat.tab[i][j];
                 addFrontList(liste_arc,e);
             }
             else if(duels_mat.tab[i][j] > duels_mat.tab[j][i])
             {
                 e.orig = j;
                 e.dest = i;
-                e.poids = duels_mat.tab[j][i] - duels_mat.tab[i][j];
+                e.poids = duels_mat.tab[i][j] - duels_mat.tab[j][i];
                 addFrontList(liste_arc,e);
             }
             
@@ -88,11 +88,15 @@ int vainqueur_condorcet(t_mat_int_dyn duels_mat){
     return -1; //si aucun gagnant retourne -1
 }
 
-int condorcet_minmax(t_mat_int_dyn duels_mat){
+void condorcet_minmax(t_mat_int_dyn duels_mat,t_str_tab_dyn candidats,FILE *logfp){
     int vainqueur = vainqueur_condorcet(duels_mat);
-    affiche_t_mat_int_dyn(duels_mat,stdout);
-    if(vainqueur != -1)
-        return vainqueur;
+    fprintf(logfp,"Minmax : matrice Duels :\n");
+    affiche_str_tab(&candidats,logfp);
+    affiche_t_mat_int_dyn(duels_mat,logfp);
+    if(vainqueur != -1){
+        printf("Mode de Scrutin : Condorcet Minmax, %d candidats, %d votants, vainqueur = %s\n",
+        duels_mat.nbCol,duels_mat.nbRows,candidats.tab[vainqueur]);
+        exit(0);}
     int scoreMinMax; //le meillieurs des pires scores;
     int scoreMinActuel;
     for(int i=0;i<duels_mat.nbRows;i++){
@@ -111,32 +115,43 @@ int condorcet_minmax(t_mat_int_dyn duels_mat){
             vainqueur = i;
             }
     }
-    return vainqueur;
+    printf("Mode de Scrutin : Condorcet Minmax, %d candidats, %d votants, vainqueur = %s\n",
+        duels_mat.nbCol,duels_mat.nbRows,candidats.tab[vainqueur]);
 }
 
 
 
-int condorcet_paires_class(t_mat_int_dyn duels_mat){
+void condorcet_paires_class(t_mat_int_dyn duels_mat,t_str_tab_dyn candidats,FILE *logfp){
     int gagnant;
     liste larcFull;
+    createList(&larcFull);
+    fprintf(logfp,"classement par paires : matrice Duels :\n");
+    affiche_str_tab(&candidats,logfp);
+    affiche_t_mat_int_dyn(duels_mat,logfp);
+    fprintf(logfp,"classement par paires : liste arc triées :\n");
     creer_liste_arc_paire(duels_mat,&larcFull);
-    bubbleSortList(&larcFull);
+    //bubbleSortList(&larcFull);
+    dumpList(larcFull,logfp);
     liste larcConf;
+    createList(&larcConf);
     Elementliste e;
     headList(larcFull,&e);
     delFrontList(&larcFull);
     addFrontList(&larcConf,e);
     int nb_candidat = 2;
     while(!emptyList(larcFull)){
-        printf("ok1\n");
-        // if(circuits(larcConf,nb_candidat))
-        //     delFrontList(&larcConf);
-        // printf("ok2\n");
+        fprintf(logfp,"classement par paires : nouvelle liste d'arcs :\n");
+        dumpList(larcConf,logfp);
+        fprintf(logfp,"nb_candidat:%d",nb_candidat);
+        fprintf(logfp,"\n");
+        if(circuits(larcConf,nb_candidat))
+            delFrontList(&larcConf);
+        // fprintf(logfp,"classement par paires : nouvelle liste d'arcs :\n");
         headList(larcFull,&e);
         nb_candidat = nb_nouveaux_candidat(larcConf,e);
         delFrontList(&larcFull);
         addFrontList(&larcConf,e);
     }
-
-    return gagnant;
+    printf("Mode de Scrutin : Condorcet classement par paire, %d candidats, %d votants, vainqueur = %s\n",
+        duels_mat.nbCol,duels_mat.nbRows,candidats.tab[gagnant]);
 }

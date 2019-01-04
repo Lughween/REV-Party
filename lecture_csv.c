@@ -34,7 +34,6 @@ void csv_get_candidat(char *vote_csv,t_str_tab_dyn *candidats){
     del_jump(ligne);
     champ = strtok_r(ligne,DELIM,&svptr);
     for(int i=0;i<OFFSET-1;i++){champ = strtok_r(NULL,DELIM,&svptr);}//saut des champ inutiles
-    printf("candidats.dim:%d\n",candidats->dim);
     while(champ != NULL && i_collonne<candidats->dim){
         champ = strtok_r(NULL,DELIM,&svptr);
         strcpy(candidats->tab[i_collonne],champ);
@@ -100,4 +99,48 @@ void csv_get_duels_mat(char *votes_csv,t_mat_int_dyn *duels_mat,int nb_candidats
         i_ligne++;
     }
     fclose(csv);
+}
+
+void csv_get_candidat_duels(char *vote_csv,t_str_tab_dyn *candidats){
+    FILE *csv = NULL;
+    csv = fopen(vote_csv,"r");
+    int i_collonne = 0;
+    char ligne[TAILLE_MAX]; //chaine qui récupère la ligne
+    char *champ; 
+    char *svptr;
+    if(csv == NULL){
+        printf("err::FICHIER:%s ILLISIBLE !\n",vote_csv);
+        exit(1);
+    }
+    fgets(ligne,TAILLE_MAX,csv);
+    del_jump(ligne);
+    champ = strtok_r(ligne,DELIM,&svptr);
+    printf("candidats.dim:%d\n",candidats->dim);
+    while(champ != NULL && i_collonne<candidats->dim){
+        champ = strtok_r(NULL,DELIM,&svptr);
+        strcpy(candidats->tab[i_collonne],champ);
+        i_collonne++;
+    }
+    fclose(csv);
+}
+
+void csv_compte_ballot(char *csv,int *nb_votants,int *nb_candidats){
+    FILE *fcsv =NULL;
+    fcsv = fopen(csv,"r");
+    if(fcsv == NULL){
+        printf("err::FICHIER:%s ILLISIBLE !\n",csv);
+        exit(1);
+    }
+    char ligne[TAILLE_MAX];
+    char *champ;
+    char *svptr;
+    fgets(ligne,TAILLE_MAX,fcsv);
+    champ = strtok_r(ligne,DELIM,&svptr);
+    for(int i=0;i<OFFSET;i++){champ = strtok_r(NULL,DELIM,&svptr);}
+    while(champ != NULL){
+        *nb_candidats = *nb_candidats+1;
+        champ = strtok_r(NULL,DELIM,&svptr);
+    }
+    while(fgets(ligne,TAILLE_MAX,fcsv) != NULL){
+        *nb_votants = *nb_votants+1;}
 }

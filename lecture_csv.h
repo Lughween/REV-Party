@@ -20,4 +20,7 @@ int convertir_str_to_int(char *str);
 void del_jump(char *ligne); //suprime le retour à la ligne à la fin d'une ligne
 
 void csv_get_duels_mat(char *votes_csv,t_mat_int_dyn *duels_mat,int nb_candidats);
-void csv_get_candidat_duels(char *vote_csv,t_str_tab_dyn candidats);
+void csv_get_candidat_duels(char *vote_csv,t_str_tab_dyn *candidats);
+
+void csv_compte_ballot(char *csv,int *nb_votants,int *nb_candidats);/// \brief compte le nombre de candidats et de votant dans le csv d'un ballots
+void csv_compte_duel(char *csv,int *nb_votants,int *nb_candidats);/// \brief idem pour un csv d'une matrice duels

@@ -7,11 +7,11 @@
 
 int i_max_tab(int *t,int dim);
 /// \brief renvoi le vainqueur par la méthode vote alternatif
-char *vote_alternatif(t_mat_int_dyn votes,t_str_tab_dyn candidats); 
+void vote_alternatif(t_mat_int_dyn votes,t_str_tab_dyn candidats,FILE *logfp); 
 /// \brief renvoi le vainqueur par la méthode uninominal 1 tours
-char *uninominal1(t_mat_int_dyn votes,t_str_tab_dyn candidats);
+void uninominal1(t_mat_int_dyn votes,t_str_tab_dyn candidats,FILE *logfp);
 /// \brief renvoi le vainqueur par la méthode uninominal 2 tours
-char *uninominal2(t_mat_int_dyn votes,t_str_tab_dyn candidats);
+void uninominal2(t_mat_int_dyn votes,t_str_tab_dyn candidats,FILE *logfp);
 int i_min_tab(int *t,int dim);
 
 

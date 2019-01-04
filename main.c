@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include "condorcet.h"
+#include "vote_UniAlt.h"
+#include "lecture_csv.h"
 
 #define bal_i 0
 #define bal_l 1
@@ -62,22 +65,38 @@ int main(int argc, char const *argv[])
 {   
     char *params[4]; 
     analyse_balise_get_arg(argc,argv,&params);
-    char *logfp;
+    FILE *logfp =NULL;
     if(is_bal_l)
-        logfp = params[bal_l];
+        logfp = fopen(params[bal_l],"a+");
     else
-        logfp = "stdout";
+        logfp = stdout;
+    t_mat_int_dyn votes;
+    t_mat_int_dyn duel_mat;
+    t_str_tab_dyn candidats;
+    int nb_candidat =0;
+    int nb_votants =0;
+    if(is_bal_i){
+        
+        csv_compte_ballot(params[bal_i],&nb_votants,&nb_candidat);
+        creer_t_mat_int_dyn(&votes,nb_votants,nb_candidat);
+        creer_str_tab_dyn(&candidats,nb_candidat);
+        csv_get_candidat(params[bal_i],&candidats);
+        csv_get_votes(params[bal_i],&votes,candidats.dim);
+        creer_duel_mat(&duel_mat,votes);
+    }else{
+        csv_get_candidat_duels(params[bal_d],&candidats);
+        csv_get_duels_mat(params[bal_d],&duel_mat,candidats.dim);
+    }
 
     if(is_bal_m){
-        printf("parm_m :%s\n",params[bal_m]);
         if(!strcmp(params[bal_m],"uni1"))
-            printf("scrutin uni1\n");
+            uninominal1(votes,candidats,logfp);
         else if(!strcmp(params[bal_m],"uni2"))
-            printf("scrutin uni2\n");
+            uninominal2(votes,candidats,logfp);
         else if(!strcmp(params[bal_m],"cm"))
-            printf("scrutin condorcet minmax\n");
+            condorcet_minmax(duel_mat,candidats,logfp);
         else if(!strcmp(params[bal_m],"cp"))
-            printf("scrutin condorcet paires\n");
+            condorcet_paires_class(duel_mat,candidats,logfp);
         else if(!strcmp(params[bal_m],"cs"))
             printf("scrutin condorcet Schuzle\n");
         else if(!strcmp(params[bal_m],"va"))

@@ -1,12 +1,12 @@
-CFLAGS=-Wall -g -lm -L -libcircuit
+CFLAGS=-Wall -g -lm -L -lcircuit
 
-all: test
+all: scrutin
 
-test: test.o graphePython.o condorcet.o lecture_csv.o utils_sd.o liste.o elementliste.o vote_UniAlt.o
-	gcc -o test test.o liste.o graphePython.o condorcet.o lecture_csv.o utils_sd.o elementliste.o vote_UniAlt.o $(CFLAGS)
+scrutin: main.o graphePython.o condorcet.o lecture_csv.o utils_sd.o liste.o elementliste.o vote_UniAlt.o circuit.o
+	gcc -o scrutin main.o liste.o graphePython.o condorcet.o lecture_csv.o utils_sd.o elementliste.o vote_UniAlt.o circuit.o $(CFLAGS)
 
-test.o: test.c
-	gcc -o test.o -c test.c $(CFLAGS)
+main.o: main.c
+	gcc -o main.o -c main.c $(CFLAGS)
 
 graphePython.o: graphePython.c
 	gcc -o graphePython.o -c graphePython.c $(CFLAGS)
@@ -27,6 +27,8 @@ liste.o: liste.c
 	gcc -o liste.o -c liste.c $(CFLAGS)
 vote_uniAlt.o: vote_UniAlt.c
 	gcc -o vote_uniAlt.o -c vote_UniAlt.c $(CFLAGS)
+circuit.o: circuit.c
+	gcc -o circuit.o -c circuit.c $(CFLAGS)
 
 clean:
 	rm -rf *.o
