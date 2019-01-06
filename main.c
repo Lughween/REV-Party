@@ -84,6 +84,9 @@ int main(int argc, char const *argv[])
         csv_get_votes(params[bal_i],&votes,candidats.dim);
         creer_duel_mat(&duel_mat,votes);
     }else{
+        csv_compte_duel(params[bal_d],&nb_votants,&nb_candidat);
+        creer_str_tab_dyn(&candidats,nb_candidat);
+        creer_t_mat_int_dyn(&duel_mat,nb_votants,nb_candidat);
         csv_get_candidat_duels(params[bal_d],&candidats);
         csv_get_duels_mat(params[bal_d],&duel_mat,candidats.dim);
     }
@@ -94,16 +97,34 @@ int main(int argc, char const *argv[])
         else if(!strcmp(params[bal_m],"uni2"))
             uninominal2(votes,candidats,logfp);
         else if(!strcmp(params[bal_m],"cm"))
-            condorcet_minmax(duel_mat,candidats,logfp);
+            condorcet_minmax(duel_mat,candidats,logfp,nb_votants);
         else if(!strcmp(params[bal_m],"cp"))
-            condorcet_paires_class(duel_mat,candidats,logfp);
+            condorcet_paires_class(duel_mat,candidats,logfp,nb_votants);
         else if(!strcmp(params[bal_m],"cs"))
-            printf("scrutin condorcet Schuzle\n");
+            condorcet_Schuzle(duel_mat,candidats,logfp,nb_votants);
         else if(!strcmp(params[bal_m],"va"))
-            printf("scrutin vote alternatif\n");
+            vote_alternatif(votes,candidats,logfp);
         else
             printf("paramètre de m doit être un des suivant :  uni1,uni2,cm,cp;cs,va !\n");
-    }else
-        printf("tout les scrutins \n");
+    }else{
+        condorcet_minmax(duel_mat,candidats,logfp,nb_votants);
+        printf("\n");
+        condorcet_paires_class(duel_mat,candidats,logfp,nb_votants);
+        printf("\n");
+        condorcet_Schuzle(duel_mat,candidats,logfp,nb_votants);
+        printf("\n");
+        if(is_bal_i){
+        uninominal1(votes,candidats,logfp);
+        printf("\n");
+        uninominal2(votes,candidats,logfp);
+        printf("\n");
+        vote_alternatif(votes,candidats,logfp);}
+        printf("\n");
+        
+    }
+    if(is_bal_i)
+        free_t_mat_int(&votes);
+    free_t_mat_int(&duel_mat);
+    free_str_tab_dyn(&candidats);
     return 0;
 }

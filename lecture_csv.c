@@ -83,15 +83,12 @@ void csv_get_duels_mat(char *votes_csv,t_mat_int_dyn *duels_mat,int nb_candidats
         printf("err::FICHIER:%s ILLISIBLE !\n",votes_csv);
         exit(1);
     }
-
     while(fgets(ligne,TAILLE_MAX,csv) != NULL){
         del_jump(ligne);
         champ = strtok_r(ligne,DELIM,&svptr);
         i_collonne =0;
-        printf("champ lu :%s\n",champ);
         while(champ != NULL && i_collonne < nb_candidats){
                 if(i_ligne>0){
-                    printf("champ lu :%s\n",champ);
                     duels_mat->tab[i_ligne-1][i_collonne] = convertir_str_to_int(champ);}
                     champ = strtok_r(NULL,DELIM,&svptr);
             i_collonne++;
@@ -115,10 +112,9 @@ void csv_get_candidat_duels(char *vote_csv,t_str_tab_dyn *candidats){
     fgets(ligne,TAILLE_MAX,csv);
     del_jump(ligne);
     champ = strtok_r(ligne,DELIM,&svptr);
-    printf("candidats.dim:%d\n",candidats->dim);
     while(champ != NULL && i_collonne<candidats->dim){
-        champ = strtok_r(NULL,DELIM,&svptr);
         strcpy(candidats->tab[i_collonne],champ);
+        champ = strtok_r(NULL,DELIM,&svptr);
         i_collonne++;
     }
     fclose(csv);
@@ -137,6 +133,26 @@ void csv_compte_ballot(char *csv,int *nb_votants,int *nb_candidats){
     fgets(ligne,TAILLE_MAX,fcsv);
     champ = strtok_r(ligne,DELIM,&svptr);
     for(int i=0;i<OFFSET;i++){champ = strtok_r(NULL,DELIM,&svptr);}
+    while(champ != NULL){
+        *nb_candidats = *nb_candidats+1;
+        champ = strtok_r(NULL,DELIM,&svptr);
+    }
+    while(fgets(ligne,TAILLE_MAX,fcsv) != NULL){
+        *nb_votants = *nb_votants+1;}
+}
+
+void csv_compte_duel(char *csv,int *nb_votants,int *nb_candidats){
+     FILE *fcsv =NULL;
+    fcsv = fopen(csv,"r");
+    if(fcsv == NULL){
+        printf("err::FICHIER:%s ILLISIBLE !\n",csv);
+        exit(1);
+    }
+    char ligne[TAILLE_MAX];
+    char *champ;
+    char *svptr;
+    fgets(ligne,TAILLE_MAX,fcsv);
+    champ = strtok_r(ligne,DELIM,&svptr);
     while(champ != NULL){
         *nb_candidats = *nb_candidats+1;
         champ = strtok_r(NULL,DELIM,&svptr);

@@ -91,7 +91,6 @@ void affiche_str_tab(t_str_tab_dyn *tab,FILE *logfp){
 // }
 /****************************Initialisation***************************/
 void init_tab_int(int *tab,int dim,int valeur){
-    printf("here\n");
     for(int i=0;i<dim;i++){
         tab[i] = valeur;
     }

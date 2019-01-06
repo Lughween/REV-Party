@@ -4,7 +4,7 @@ ko='\e[00;31m';
 wipe='\e[00m';
 ok='\e[01;32m';
 
-CODE=../Vote
+CODE=/home/ludo/Document/REV-Party/.
 VALID=.
 TEST=$VALID/fich_tests
 LOG=$VALID/Log

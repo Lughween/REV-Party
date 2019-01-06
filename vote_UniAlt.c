@@ -40,6 +40,7 @@ t_tab_int_dyn calcul_scores(t_mat_int_dyn votes){
 		 if(favorite_cand.tab[i]>=0)
             scores_candidat.tab[favorite_cand.tab[i]]++;
 	}
+    free_t_tab_int(&favorite_cand);
     return scores_candidat;
 }
 /// \brief renvoi le nombre de votes pour un candidat donnée
@@ -57,6 +58,7 @@ void uninominal1(t_mat_int_dyn votes,t_str_tab_dyn candidats,FILE *logfp){
 	int gagnant = 0;
 	t_tab_int_dyn scores_candidat = calcul_scores(votes);//tableau comptabilisant les sco
     fprintf(logfp,"Uni1 : Score candidat:\n");
+    affiche_str_tab(&candidats,logfp);
     affiche_t_tab_int_dyn(scores_candidat,logfp);
 	gagnant = i_max_tab(scores_candidat.tab,scores_candidat.dim);
     char str_gagnant[CH_MAX];
@@ -74,10 +76,7 @@ void uninominal1(t_mat_int_dyn votes,t_str_tab_dyn candidats,FILE *logfp){
 
 void tour2(t_mat_int_dyn votes,t_str_tab_dyn candidats,FILE *logfp){
     int gagnant = 0;
-	t_tab_int_dyn scores_candidat = calcul_scores(votes);//tableau comptabilisant les scores des candidats
-    fprintf(logfp,"Uni2 : ballot T2:\n");
-    affiche_str_tab(&candidats,logfp);
-    affiche_t_mat_int_dyn(votes,logfp);
+	t_tab_int_dyn scores_candidat = calcul_scores(votes);//tableau comptabilisant les scores des candidat
     fprintf(logfp,"Uni2 : Score candidat T2:\n");
     affiche_str_tab(&candidats,logfp);
     affiche_t_tab_int_dyn(scores_candidat,logfp);
@@ -116,9 +115,6 @@ void init_tour2(t_mat_int_dyn *votes,t_str_tab_dyn *candidats,int gagnant1,int g
 void uninominal2(t_mat_int_dyn votes,t_str_tab_dyn candidats,FILE *logfp){
 	int gagnant1;
     int gagnant2;
-    fprintf(logfp,"Uni2 : ballot T1:\n");
-    affiche_str_tab(&candidats,logfp);
-    affiche_t_mat_int_dyn(votes,logfp);
     t_tab_int_dyn scores_candidat = calcul_scores(votes);
     fprintf(logfp,"Uni2 : Score candidat T1:\n");
     affiche_str_tab(&candidats,logfp);
@@ -157,15 +153,32 @@ int i_min_tab(int *t,int dim){
     return i_min;
 }
 
+int i_min_tab_plusieur_min(int *t,int dim){
+    int i_min = 0;
+    int min = t[0];
+    int i =1;
+    while(i<dim){
+        if(t[i] < min){
+            min = t[i];
+            i_min = i;}
+        i++;
+    }
+    return i_min;
+}
 void vote_alternatif(t_mat_int_dyn votes,t_str_tab_dyn candidats,FILE *logfp){
     int perdant = -1;
     while(votes.nbCol != 1){
         t_tab_int_dyn scores_candidat = calcul_scores(votes);
-        perdant = i_min_tab(scores_candidat.tab,scores_candidat.dim);
+        perdant = i_min_tab_plusieur_min(scores_candidat.tab,scores_candidat.dim);
+        fprintf(logfp,"Vote Alternatif Score Candidat:\n");
+        affiche_str_tab(&candidats,logfp);
+        affiche_t_tab_int_dyn(scores_candidat,logfp);
+        fprintf(logfp,"Vote Alternatif : Elimination : %s\n",candidats.tab[perdant]);
         del_col_mat(&votes,perdant);
         del_str_strTab(&candidats,perdant);
     }
-    return candidats.tab[0];
+    printf("Mode de Scrutin : Vote Alternatif, %d candidats, %d votants, vainqueur = %s\n",
+    votes.nbCol,votes.nbRows,candidats.tab[0]);
 }
 
 void i_2max_tab(int *t,int dim,int *i_max1,int *i_max2){
