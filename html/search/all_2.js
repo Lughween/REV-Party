@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['global_2eh',['global.h',['../global_8h.html',1,'']]],
-  ['graphepython_2eh',['graphePython.h',['../graphePython_8h.html',1,'']]]
+  ['eliminer_5fsomment_5fnon_5fscharwz',['Eliminer_Somment_Non_Scharwz',['../condorcet_8c.html#a6d9ea936da5514035b9d222a5d91df23',1,'condorcet.c']]]
 ];

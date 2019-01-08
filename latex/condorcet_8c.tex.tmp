@@ -1,0 +1,50 @@
+\hypertarget{condorcet_8c}{}\section{Référence du fichier condorcet.\+c}
+\label{condorcet_8c}\index{condorcet.\+c@{condorcet.\+c}}
+{\ttfamily \#include \char`\"{}condorcet.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de condorcet.\+c\+:
+% FIG 0
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{condorcet_8c_a8f2595df1118318be77bcfce3996cd53}\label{condorcet_8c_a8f2595df1118318be77bcfce3996cd53}} 
+void \hyperlink{condorcet_8c_a8f2595df1118318be77bcfce3996cd53}{creer\+\_\+duel\+\_\+mat} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} $\ast$duel\+\_\+mat, \hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} votes)
+\begin{DoxyCompactList}\small\item\em fonction qui prend une matrice contenant des votes et renvoie sa matrice de duels les poid étant le nombre de vote pour le gagnant \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{condorcet_8c_aadabb4e8c8585e0debd71487cb1a1a9e}\label{condorcet_8c_aadabb4e8c8585e0debd71487cb1a1a9e}} 
+void \hyperlink{condorcet_8c_aadabb4e8c8585e0debd71487cb1a1a9e}{creer\+\_\+arc\+\_\+liste} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} duels\+\_\+mat, \hyperlink{structliste}{liste} $\ast$liste\+\_\+arc)
+\begin{DoxyCompactList}\small\item\em fonction qui prend une matrice contenant des votes et renvoie sa matrice de duels, les poid étant la différence entre les score de chaque candidat pour chaque duel \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{condorcet_8c_a18ef10929dd51c1bd06760f4e62ae92c}\label{condorcet_8c_a18ef10929dd51c1bd06760f4e62ae92c}} 
+int \hyperlink{condorcet_8c_a18ef10929dd51c1bd06760f4e62ae92c}{vainqueur\+\_\+condorcet} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} duels\+\_\+mat)
+\begin{DoxyCompactList}\small\item\em un vainqueur de concorcet si il y en à puis retourne son indice sinon -\/14 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{condorcet_8c_a419146ccf1debb30ce9f69b19920c42e}\label{condorcet_8c_a419146ccf1debb30ce9f69b19920c42e}} 
+void \hyperlink{condorcet_8c_a419146ccf1debb30ce9f69b19920c42e}{condorcet\+\_\+minmax} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} duels\+\_\+mat, \hyperlink{structs__str__tab__dyn}{t\+\_\+str\+\_\+tab\+\_\+dyn} candidats, F\+I\+LE $\ast$logfp, int nb\+\_\+votants)
+\begin{DoxyCompactList}\small\item\em cherche un vainqueur de condorcet et applique la méthode min max si besoin \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{condorcet_8c_ab12021d63e7c566435ff50b0b6bc1cf5}\label{condorcet_8c_ab12021d63e7c566435ff50b0b6bc1cf5}} 
+bool \hyperlink{condorcet_8c_ab12021d63e7c566435ff50b0b6bc1cf5}{a\+\_\+perdu} (int candidats, \hyperlink{structliste}{liste} larc)
+\begin{DoxyCompactList}\small\item\em renvoie vrai si le candidat dans ce graphe-\/ci à eu une défaite renvoi false sinon \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{condorcet_8c_a2a201ad028b6ffc9caf94b7f31820e15}\label{condorcet_8c_a2a201ad028b6ffc9caf94b7f31820e15}} 
+void \hyperlink{condorcet_8c_a2a201ad028b6ffc9caf94b7f31820e15}{condorcet\+\_\+paires\+\_\+class} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} duels\+\_\+mat, \hyperlink{structs__str__tab__dyn}{t\+\_\+str\+\_\+tab\+\_\+dyn} candidats, F\+I\+LE $\ast$logfp, int nb\+\_\+votants)
+\begin{DoxyCompactList}\small\item\em cherche un vainqueur de condorcet et applique la méthode du classement par paire si besoin \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{condorcet_8c_ae4347faecb91e4295b272eaaaf7e0838}\label{condorcet_8c_ae4347faecb91e4295b272eaaaf7e0838}} 
+void {\bfseries eliminer\+\_\+sommet\+\_\+graphe} (int sommet, \hyperlink{structliste}{liste} $\ast$larc)
+\item 
+\mbox{\Hypertarget{condorcet_8c_a27f543e10e4c808b166b220c260aec06}\label{condorcet_8c_a27f543e10e4c808b166b220c260aec06}} 
+bool {\bfseries est\+\_\+dans\+\_\+graphe} (int sommet, \hyperlink{structliste}{liste} larc)
+\item 
+\mbox{\Hypertarget{condorcet_8c_a872991a636abde49b70362e293482dec}\label{condorcet_8c_a872991a636abde49b70362e293482dec}} 
+void {\bfseries verifier\+\_\+candidat\+\_\+graphe} (\hyperlink{structs__tab__dyn}{t\+\_\+tab\+\_\+int\+\_\+dyn} $\ast$candidats, \hyperlink{structliste}{liste} larc, int $\ast$nb\+\_\+candidat\+\_\+present)
+\item 
+\mbox{\Hypertarget{condorcet_8c_a6d9ea936da5514035b9d222a5d91df23}\label{condorcet_8c_a6d9ea936da5514035b9d222a5d91df23}} 
+void \hyperlink{condorcet_8c_a6d9ea936da5514035b9d222a5d91df23}{Eliminer\+\_\+\+Somment\+\_\+\+Non\+\_\+\+Scharwz} (\hyperlink{structs__tab__dyn}{t\+\_\+tab\+\_\+int\+\_\+dyn} $\ast$candidats, \hyperlink{structliste}{liste} $\ast$larc, int $\ast$nb\+\_\+candidat\+\_\+present)
+\begin{DoxyCompactList}\small\item\em verifie si le candidat fait partie de son ensemble de Schwarz (\href{https://fr.wikipedia.org/wiki/M%C3%A9thode_Schulze}{\tt https\+://fr.\+wikipedia.\+org/wiki/\+M\%\+C3\%\+A9thode\+\_\+\+Schulze} (cf. Heuristique de l\textquotesingle{}ensemble de Schwartz)) et l\textquotesingle{}élimine si ce n\textquotesingle{}est pas le cas \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{condorcet_8c_a7e9af29059dfda2311c4bee9c930909d}\label{condorcet_8c_a7e9af29059dfda2311c4bee9c930909d}} 
+void \hyperlink{condorcet_8c_a7e9af29059dfda2311c4bee9c930909d}{condorcet\+\_\+\+Schuzle} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} duels\+\_\+mat, \hyperlink{structs__str__tab__dyn}{t\+\_\+str\+\_\+tab\+\_\+dyn} candidats, F\+I\+LE $\ast$logfp, int nb\+\_\+votants)
+\begin{DoxyCompactList}\small\item\em cherche un vainqueur de condorcet puis applique la méthode de Schuzle si besoin \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Viala Ludovic 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+december 2018 
+\end{DoxyDate}

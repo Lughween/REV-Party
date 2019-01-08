@@ -102,7 +102,7 @@ void headList(liste p,Elementliste *e){
     copie_element(e,p.Tabliste[p.Tete]);
 }
 
-void TailList(liste p, Elementliste *e){
+void tailList(liste p, Elementliste *e){
     copie_element(e,p.Tabliste[0]);
 }
 

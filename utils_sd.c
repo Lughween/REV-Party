@@ -22,13 +22,6 @@ char **creer_tab_str(int dim){
     }
     return tab;
 }
-// char *** creer_mat_char(int nbRows, int nbCol){
-//     char ***mat = (char***) calloc(nbRows,sizeof(char**));
-//     for(int i=0;i<nbRows;i++){
-//         mat[i] = (char**) calloc(nbCol,sizeof(char*));
-//     }
-//     return mat;
-// }
 void creer_t_mat_int_dyn(t_mat_int_dyn * stTab, int nbRows, int nbCol){
     stTab->tab = creer_mat_int(nbRows,nbCol);
     stTab->nbCol = nbCol;
@@ -44,12 +37,6 @@ void creer_str_tab_dyn(t_str_tab_dyn *chaines,int dim){
     chaines->dim = dim;
     chaines->tab = creer_tab_str(dim);
 }
-// void creer_t_mat_char_dyn(t_mat_char_star_dyn *s_tabmots, int nbRows, int nbCol){
-//     s_tabmots->tab =creer_mat_char(nbRows,nbCol);
-//     s_tabmots->nbRows = nbRows;
-//     s_tabmots->nbCol = nbCol;
-//     s_tabmots->offset = OFFSET;
-// }
 
 /*******************************affichage***************************/
 
@@ -81,14 +68,6 @@ void affiche_str_tab(t_str_tab_dyn *tab,FILE *logfp){
     fprintf(logfp,"\n");
 }
 
-// void affiche_t_mat_char_star_dyn(t_mat_char_star_dyn t, FILE *logfp){
-//     for(int i=0;i<t.nbRows;i++){
-//         for(int j=0;j<t.nbCol;j++){
-//             fprintf(logfp,"%s ",t.tab[i][j]);
-//         }
-//         fprintf(logfp,"\n");
-//     }
-// }
 /****************************Initialisation***************************/
 void init_tab_int(int *tab,int dim,int valeur){
     for(int i=0;i<dim;i++){
@@ -97,7 +76,6 @@ void init_tab_int(int *tab,int dim,int valeur){
 }
 
 void init_mat_int(int **mat, int nbRows,int nbCol,int val){
-    printf("here2\n");
     for(int i=0;i<nbRows;i++){
         init_tab_int(mat[i],nbCol,val);
     }
@@ -177,11 +155,6 @@ void del_str_strTab(t_str_tab_dyn *t,int indice){
         strcpy(t->tab[i],str);
     }
 }
-// void xch(int *a,int *b){
-//     int tmp =*b;
-//     *b = a;
-//     *a = tmp;
-// }
 void del_col_mat(t_mat_int_dyn *t,int i_col){
     int nb_col = t->nbCol;
     t->nbCol--;

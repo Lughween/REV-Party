@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>REV Party: Référence du fichier vote_UniAlt.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">REV Party
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier vote_UniAlt.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="vote__UniAlt_8h_source.html">vote_UniAlt.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de vote_UniAlt.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="vote__UniAlt_8c__incl.png" border="0" usemap="#vote__UniAlt_8c" alt=""/></div>
+<!-- MAP 0 -->
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:aebe1b1a4966abe582e9c5be8ce11c98e"><td class="memItemLeft" align="right" valign="top"><a id="aebe1b1a4966abe582e9c5be8ce11c98e"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vote__UniAlt_8c.html#aebe1b1a4966abe582e9c5be8ce11c98e">i_max_tab</a> (int *t, int dim)</td></tr>
+<tr class="memdesc:aebe1b1a4966abe582e9c5be8ce11c98e"><td class="mdescLeft">&#160;</td><td class="mdescRight">cherche le seul maximum d'un tableau et renvoi -1 si il y en à plusieurs(permet de gèrer le cas ou il y à 2 vainqueur aexequo) <br /></td></tr>
+<tr class="separator:aebe1b1a4966abe582e9c5be8ce11c98e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf86c981b671a868979b3e5cd06c6fd7"><td class="memItemLeft" align="right" valign="top"><a id="aaf86c981b671a868979b3e5cd06c6fd7"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>nb_votes_exprimer</b> (<a class="el" href="structs__tab__dyn.html">t_tab_int_dyn</a> scores)</td></tr>
+<tr class="separator:aaf86c981b671a868979b3e5cd06c6fd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae483f4fd0c7f7ba8912975f62fd3da65"><td class="memItemLeft" align="right" valign="top"><a id="ae483f4fd0c7f7ba8912975f62fd3da65"></a>
+<a class="el" href="structs__tab__dyn.html">t_tab_int_dyn</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vote__UniAlt_8c.html#ae483f4fd0c7f7ba8912975f62fd3da65">calcul_scores</a> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> votes)</td></tr>
+<tr class="memdesc:ae483f4fd0c7f7ba8912975f62fd3da65"><td class="mdescLeft">&#160;</td><td class="mdescRight">calcul le score de chaque candidat et les met dans un tableau à une dimension. <br /></td></tr>
+<tr class="separator:ae483f4fd0c7f7ba8912975f62fd3da65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf57720a59c1fa08de6c6bbb93ffd556"><td class="memItemLeft" align="right" valign="top"><a id="aaf57720a59c1fa08de6c6bbb93ffd556"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vote__UniAlt_8c.html#aaf57720a59c1fa08de6c6bbb93ffd556">trouver_votes</a> (int candidat, <a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> votes)</td></tr>
+<tr class="memdesc:aaf57720a59c1fa08de6c6bbb93ffd556"><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoi le nombre de votes pour un candidat donnée <br /></td></tr>
+<tr class="separator:aaf57720a59c1fa08de6c6bbb93ffd556"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16945e150e3b2427571580047c79c764"><td class="memItemLeft" align="right" valign="top"><a id="a16945e150e3b2427571580047c79c764"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vote__UniAlt_8c.html#a16945e150e3b2427571580047c79c764">uninominal1</a> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> votes, <a class="el" href="structs__str__tab__dyn.html">t_str_tab_dyn</a> candidats, FILE *logfp)</td></tr>
+<tr class="memdesc:a16945e150e3b2427571580047c79c764"><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoi le vainqueur par la méthode uninominal 1 tours <br /></td></tr>
+<tr class="separator:a16945e150e3b2427571580047c79c764"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4aac8825a4c3a09f7eefd4bd5611bb1"><td class="memItemLeft" align="right" valign="top"><a id="ac4aac8825a4c3a09f7eefd4bd5611bb1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>tour2</b> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> votes, <a class="el" href="structs__str__tab__dyn.html">t_str_tab_dyn</a> candidats, FILE *logfp)</td></tr>
+<tr class="separator:ac4aac8825a4c3a09f7eefd4bd5611bb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5919ef8eb5006de9a935fde4d0056164"><td class="memItemLeft" align="right" valign="top"><a id="a5919ef8eb5006de9a935fde4d0056164"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init_tour2</b> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> *votes, <a class="el" href="structs__str__tab__dyn.html">t_str_tab_dyn</a> *candidats, int gagnant1, int gagnant2)</td></tr>
+<tr class="separator:a5919ef8eb5006de9a935fde4d0056164"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9aa5115f365aac1dca2e35c9a89aad43"><td class="memItemLeft" align="right" valign="top"><a id="a9aa5115f365aac1dca2e35c9a89aad43"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vote__UniAlt_8c.html#a9aa5115f365aac1dca2e35c9a89aad43">uninominal2</a> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> votes, <a class="el" href="structs__str__tab__dyn.html">t_str_tab_dyn</a> candidats, FILE *logfp)</td></tr>
+<tr class="memdesc:a9aa5115f365aac1dca2e35c9a89aad43"><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoi le vainqueur par la méthode uninominal 2 tours <br /></td></tr>
+<tr class="separator:a9aa5115f365aac1dca2e35c9a89aad43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e351986419a0fe3dc9f4fe24b4b3ed8"><td class="memItemLeft" align="right" valign="top"><a id="a2e351986419a0fe3dc9f4fe24b4b3ed8"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vote__UniAlt_8c.html#a2e351986419a0fe3dc9f4fe24b4b3ed8">i_min_tab</a> (int *t, int dim)</td></tr>
+<tr class="memdesc:a2e351986419a0fe3dc9f4fe24b4b3ed8"><td class="mdescLeft">&#160;</td><td class="mdescRight">cherche le seul minimum d'un tableau et renvoi -1 si il y en à plusieurs(permet de gèrer les votes blanc) <br /></td></tr>
+<tr class="separator:a2e351986419a0fe3dc9f4fe24b4b3ed8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d60b41ec32628f36b6bf31d8ed64190"><td class="memItemLeft" align="right" valign="top"><a id="a5d60b41ec32628f36b6bf31d8ed64190"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vote__UniAlt_8c.html#a5d60b41ec32628f36b6bf31d8ed64190">i_min_tab_plusieur_min</a> (int *t, int dim)</td></tr>
+<tr class="memdesc:a5d60b41ec32628f36b6bf31d8ed64190"><td class="mdescLeft">&#160;</td><td class="mdescRight">cherche le minimum d'un tableau autorisant plusieur minimum (renvoi l'indice de la première occurence de celui-ci) <br /></td></tr>
+<tr class="separator:a5d60b41ec32628f36b6bf31d8ed64190"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a001c9af9fba1ccbba876b028a1618159"><td class="memItemLeft" align="right" valign="top"><a id="a001c9af9fba1ccbba876b028a1618159"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vote__UniAlt_8c.html#a001c9af9fba1ccbba876b028a1618159">vote_alternatif</a> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> votes, <a class="el" href="structs__str__tab__dyn.html">t_str_tab_dyn</a> candidats, FILE *logfp)</td></tr>
+<tr class="memdesc:a001c9af9fba1ccbba876b028a1618159"><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoi le vainqueur par la méthode vote alternatif <br /></td></tr>
+<tr class="separator:a001c9af9fba1ccbba876b028a1618159"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>Viala Ludovic </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>december 2018 </dd></dl>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

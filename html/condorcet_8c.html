@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>REV Party: Référence du fichier condorcet.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">REV Party
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier condorcet.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="condorcet_8h_source.html">condorcet.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de condorcet.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="condorcet_8c__incl.png" border="0" usemap="#condorcet_8c" alt=""/></div>
+<map name="condorcet_8c" id="condorcet_8c">
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a8f2595df1118318be77bcfce3996cd53"><td class="memItemLeft" align="right" valign="top"><a id="a8f2595df1118318be77bcfce3996cd53"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="condorcet_8c.html#a8f2595df1118318be77bcfce3996cd53">creer_duel_mat</a> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> *duel_mat, <a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> votes)</td></tr>
+<tr class="memdesc:a8f2595df1118318be77bcfce3996cd53"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui prend une matrice contenant des votes et renvoie sa matrice de duels les poid étant le nombre de vote pour le gagnant <br /></td></tr>
+<tr class="separator:a8f2595df1118318be77bcfce3996cd53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadabb4e8c8585e0debd71487cb1a1a9e"><td class="memItemLeft" align="right" valign="top"><a id="aadabb4e8c8585e0debd71487cb1a1a9e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="condorcet_8c.html#aadabb4e8c8585e0debd71487cb1a1a9e">creer_arc_liste</a> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> duels_mat, <a class="el" href="structliste.html">liste</a> *liste_arc)</td></tr>
+<tr class="memdesc:aadabb4e8c8585e0debd71487cb1a1a9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui prend une matrice contenant des votes et renvoie sa matrice de duels, les poid étant la différence entre les score de chaque candidat pour chaque duel <br /></td></tr>
+<tr class="separator:aadabb4e8c8585e0debd71487cb1a1a9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18ef10929dd51c1bd06760f4e62ae92c"><td class="memItemLeft" align="right" valign="top"><a id="a18ef10929dd51c1bd06760f4e62ae92c"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="condorcet_8c.html#a18ef10929dd51c1bd06760f4e62ae92c">vainqueur_condorcet</a> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> duels_mat)</td></tr>
+<tr class="memdesc:a18ef10929dd51c1bd06760f4e62ae92c"><td class="mdescLeft">&#160;</td><td class="mdescRight">un vainqueur de concorcet si il y en à puis retourne son indice sinon -14 <br /></td></tr>
+<tr class="separator:a18ef10929dd51c1bd06760f4e62ae92c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a419146ccf1debb30ce9f69b19920c42e"><td class="memItemLeft" align="right" valign="top"><a id="a419146ccf1debb30ce9f69b19920c42e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="condorcet_8c.html#a419146ccf1debb30ce9f69b19920c42e">condorcet_minmax</a> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> duels_mat, <a class="el" href="structs__str__tab__dyn.html">t_str_tab_dyn</a> candidats, FILE *logfp, int nb_votants)</td></tr>
+<tr class="memdesc:a419146ccf1debb30ce9f69b19920c42e"><td class="mdescLeft">&#160;</td><td class="mdescRight">cherche un vainqueur de condorcet et applique la méthode min max si besoin <br /></td></tr>
+<tr class="separator:a419146ccf1debb30ce9f69b19920c42e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab12021d63e7c566435ff50b0b6bc1cf5"><td class="memItemLeft" align="right" valign="top"><a id="ab12021d63e7c566435ff50b0b6bc1cf5"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="condorcet_8c.html#ab12021d63e7c566435ff50b0b6bc1cf5">a_perdu</a> (int candidats, <a class="el" href="structliste.html">liste</a> larc)</td></tr>
+<tr class="memdesc:ab12021d63e7c566435ff50b0b6bc1cf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoie vrai si le candidat dans ce graphe-ci à eu une défaite renvoi false sinon <br /></td></tr>
+<tr class="separator:ab12021d63e7c566435ff50b0b6bc1cf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a201ad028b6ffc9caf94b7f31820e15"><td class="memItemLeft" align="right" valign="top"><a id="a2a201ad028b6ffc9caf94b7f31820e15"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="condorcet_8c.html#a2a201ad028b6ffc9caf94b7f31820e15">condorcet_paires_class</a> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> duels_mat, <a class="el" href="structs__str__tab__dyn.html">t_str_tab_dyn</a> candidats, FILE *logfp, int nb_votants)</td></tr>
+<tr class="memdesc:a2a201ad028b6ffc9caf94b7f31820e15"><td class="mdescLeft">&#160;</td><td class="mdescRight">cherche un vainqueur de condorcet et applique la méthode du classement par paire si besoin <br /></td></tr>
+<tr class="separator:a2a201ad028b6ffc9caf94b7f31820e15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4347faecb91e4295b272eaaaf7e0838"><td class="memItemLeft" align="right" valign="top"><a id="ae4347faecb91e4295b272eaaaf7e0838"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>eliminer_sommet_graphe</b> (int sommet, <a class="el" href="structliste.html">liste</a> *larc)</td></tr>
+<tr class="separator:ae4347faecb91e4295b272eaaaf7e0838"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27f543e10e4c808b166b220c260aec06"><td class="memItemLeft" align="right" valign="top"><a id="a27f543e10e4c808b166b220c260aec06"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>est_dans_graphe</b> (int sommet, <a class="el" href="structliste.html">liste</a> larc)</td></tr>
+<tr class="separator:a27f543e10e4c808b166b220c260aec06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a872991a636abde49b70362e293482dec"><td class="memItemLeft" align="right" valign="top"><a id="a872991a636abde49b70362e293482dec"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>verifier_candidat_graphe</b> (<a class="el" href="structs__tab__dyn.html">t_tab_int_dyn</a> *candidats, <a class="el" href="structliste.html">liste</a> larc, int *nb_candidat_present)</td></tr>
+<tr class="separator:a872991a636abde49b70362e293482dec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d9ea936da5514035b9d222a5d91df23"><td class="memItemLeft" align="right" valign="top"><a id="a6d9ea936da5514035b9d222a5d91df23"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="condorcet_8c.html#a6d9ea936da5514035b9d222a5d91df23">Eliminer_Somment_Non_Scharwz</a> (<a class="el" href="structs__tab__dyn.html">t_tab_int_dyn</a> *candidats, <a class="el" href="structliste.html">liste</a> *larc, int *nb_candidat_present)</td></tr>
+<tr class="memdesc:a6d9ea936da5514035b9d222a5d91df23"><td class="mdescLeft">&#160;</td><td class="mdescRight">verifie si le candidat fait partie de son ensemble de Schwarz (<a href="https://fr.wikipedia.org/wiki/M%C3%A9thode_Schulze">https://fr.wikipedia.org/wiki/M%C3%A9thode_Schulze</a> (cf. Heuristique de l'ensemble de Schwartz)) et l'élimine si ce n'est pas le cas <br /></td></tr>
+<tr class="separator:a6d9ea936da5514035b9d222a5d91df23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e9af29059dfda2311c4bee9c930909d"><td class="memItemLeft" align="right" valign="top"><a id="a7e9af29059dfda2311c4bee9c930909d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="condorcet_8c.html#a7e9af29059dfda2311c4bee9c930909d">condorcet_Schuzle</a> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> duels_mat, <a class="el" href="structs__str__tab__dyn.html">t_str_tab_dyn</a> candidats, FILE *logfp, int nb_votants)</td></tr>
+<tr class="memdesc:a7e9af29059dfda2311c4bee9c930909d"><td class="mdescLeft">&#160;</td><td class="mdescRight">cherche un vainqueur de condorcet puis applique la méthode de Schuzle si besoin <br /></td></tr>
+<tr class="separator:a7e9af29059dfda2311c4bee9c930909d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><dl class="section author"><dt>Auteur</dt><dd>Viala Ludovic </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>december 2018 </dd></dl>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>

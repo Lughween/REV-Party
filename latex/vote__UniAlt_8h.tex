@@ -2,28 +2,36 @@
 \label{vote__UniAlt_8h}\index{vote\+\_\+\+Uni\+Alt.\+h@{vote\+\_\+\+Uni\+Alt.\+h}}
 
 
-implémentation du vote alternatif et uninominal 1 et 2;  
+implémentation du vote alternatif ainsi que uninominal 1 et 2;  
 
 
 {\ttfamily \#include \char`\"{}utils\+\_\+sd.\+h\char`\"{}}\newline
 Graphe des dépendances par inclusion de vote\+\_\+\+Uni\+Alt.\+h\+:
 % FIG 0
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+% FIG 1
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{vote__UniAlt_8h_aa552444581496178e5b8a1f3af96d8f2}\label{vote__UniAlt_8h_aa552444581496178e5b8a1f3af96d8f2}} 
-int \hyperlink{vote__UniAlt_8h_aa552444581496178e5b8a1f3af96d8f2}{vote\+\_\+alternatif} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} votes)
+\mbox{\Hypertarget{vote__UniAlt_8h_aebe1b1a4966abe582e9c5be8ce11c98e}\label{vote__UniAlt_8h_aebe1b1a4966abe582e9c5be8ce11c98e}} 
+int \hyperlink{vote__UniAlt_8h_aebe1b1a4966abe582e9c5be8ce11c98e}{i\+\_\+max\+\_\+tab} (int $\ast$t, int dim)
+\begin{DoxyCompactList}\small\item\em cherche le seul maximum d\textquotesingle{}un tableau et renvoi -\/1 si il y en à plusieurs(permet de gèrer le cas ou il y à 2 vainqueur aexequo) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vote__UniAlt_8h_a001c9af9fba1ccbba876b028a1618159}\label{vote__UniAlt_8h_a001c9af9fba1ccbba876b028a1618159}} 
+void \hyperlink{vote__UniAlt_8h_a001c9af9fba1ccbba876b028a1618159}{vote\+\_\+alternatif} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} votes, \hyperlink{structs__str__tab__dyn}{t\+\_\+str\+\_\+tab\+\_\+dyn} candidats, F\+I\+LE $\ast$logfp)
 \begin{DoxyCompactList}\small\item\em renvoi le vainqueur par la méthode vote alternatif \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{vote__UniAlt_8h_a17783c97c731ae74bc4953dc7d5062d9}\label{vote__UniAlt_8h_a17783c97c731ae74bc4953dc7d5062d9}} 
-int \hyperlink{vote__UniAlt_8h_a17783c97c731ae74bc4953dc7d5062d9}{uninominal1} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} votes)
+\mbox{\Hypertarget{vote__UniAlt_8h_a16945e150e3b2427571580047c79c764}\label{vote__UniAlt_8h_a16945e150e3b2427571580047c79c764}} 
+void \hyperlink{vote__UniAlt_8h_a16945e150e3b2427571580047c79c764}{uninominal1} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} votes, \hyperlink{structs__str__tab__dyn}{t\+\_\+str\+\_\+tab\+\_\+dyn} candidats, F\+I\+LE $\ast$logfp)
 \begin{DoxyCompactList}\small\item\em renvoi le vainqueur par la méthode uninominal 1 tours \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{vote__UniAlt_8h_a1c365a67b33ad01a8bb872a323bfcb65}\label{vote__UniAlt_8h_a1c365a67b33ad01a8bb872a323bfcb65}} 
-int \hyperlink{vote__UniAlt_8h_a1c365a67b33ad01a8bb872a323bfcb65}{uninominal2} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} votes)
-\begin{DoxyCompactList}\small\item\em renvoi le vainqueur par la méthode uninominal 2 tours \end{DoxyCompactList}\end{DoxyCompactItemize}
+\mbox{\Hypertarget{vote__UniAlt_8h_a9aa5115f365aac1dca2e35c9a89aad43}\label{vote__UniAlt_8h_a9aa5115f365aac1dca2e35c9a89aad43}} 
+void \hyperlink{vote__UniAlt_8h_a9aa5115f365aac1dca2e35c9a89aad43}{uninominal2} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} votes, \hyperlink{structs__str__tab__dyn}{t\+\_\+str\+\_\+tab\+\_\+dyn} candidats, F\+I\+LE $\ast$logfp)
+\begin{DoxyCompactList}\small\item\em renvoi le vainqueur par la méthode uninominal 2 tours \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vote__UniAlt_8h_a2e351986419a0fe3dc9f4fe24b4b3ed8}\label{vote__UniAlt_8h_a2e351986419a0fe3dc9f4fe24b4b3ed8}} 
+int \hyperlink{vote__UniAlt_8h_a2e351986419a0fe3dc9f4fe24b4b3ed8}{i\+\_\+min\+\_\+tab} (int $\ast$t, int dim)
+\begin{DoxyCompactList}\small\item\em cherche le seul minimum d\textquotesingle{}un tableau et renvoi -\/1 si il y en à plusieurs(permet de gèrer les votes blanc) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Description détaillée}
-implémentation du vote alternatif et uninominal 1 et 2; 
+implémentation du vote alternatif ainsi que uninominal 1 et 2; 
 
 \begin{DoxyAuthor}{Auteur}
 Viala Ludovic 

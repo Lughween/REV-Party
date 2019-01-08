@@ -73,8 +73,13 @@ $(function() {
 Graphe des dépendances par inclusion de condorcet.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="condorcet_8h__incl.png" border="0" usemap="#condorcet_8h" alt=""/></div>
-<map name="condorcet_8h" id="condorcet_8h">
-</map>
+<!-- MAP 0 -->
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="condorcet_8h__dep__incl.png" border="0" usemap="#condorcet_8hdep" alt=""/></div>
+<!-- MAP 1 -->
 </div>
 </div>
 <p><a href="condorcet_8h_source.html">Aller au code source de ce fichier.</a></p>
@@ -82,21 +87,31 @@ Graphe des dépendances par inclusion de condorcet.h:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a8f2595df1118318be77bcfce3996cd53"><td class="memItemLeft" align="right" valign="top"><a id="a8f2595df1118318be77bcfce3996cd53"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>creer_duel_mat</b> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> *duel_mat, <a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> votes)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="condorcet_8h.html#a8f2595df1118318be77bcfce3996cd53">creer_duel_mat</a> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> *duel_mat, <a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> votes)</td></tr>
+<tr class="memdesc:a8f2595df1118318be77bcfce3996cd53"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui prend une matrice contenant des votes et renvoie sa matrice de duels les poid étant le nombre de vote pour le gagnant <br /></td></tr>
 <tr class="separator:a8f2595df1118318be77bcfce3996cd53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aadabb4e8c8585e0debd71487cb1a1a9e"><td class="memItemLeft" align="right" valign="top"><a id="aadabb4e8c8585e0debd71487cb1a1a9e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>creer_arc_liste</b> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> duels_mat, <a class="el" href="structliste.html">liste</a> *liste_arc)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="condorcet_8h.html#aadabb4e8c8585e0debd71487cb1a1a9e">creer_arc_liste</a> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> duels_mat, <a class="el" href="structliste.html">liste</a> *liste_arc)</td></tr>
+<tr class="memdesc:aadabb4e8c8585e0debd71487cb1a1a9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">fonction qui prend une matrice contenant des votes et renvoie sa matrice de duels, les poid étant la différence entre les score de chaque candidat pour chaque duel <br /></td></tr>
 <tr class="separator:aadabb4e8c8585e0debd71487cb1a1a9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a18ef10929dd51c1bd06760f4e62ae92c"><td class="memItemLeft" align="right" valign="top"><a id="a18ef10929dd51c1bd06760f4e62ae92c"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>vainqueur_condorcet</b> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> duels_mat)</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="condorcet_8h.html#a18ef10929dd51c1bd06760f4e62ae92c">vainqueur_condorcet</a> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> duels_mat)</td></tr>
+<tr class="memdesc:a18ef10929dd51c1bd06760f4e62ae92c"><td class="mdescLeft">&#160;</td><td class="mdescRight">un vainqueur de concorcet si il y en à puis retourne son indice sinon -14 <br /></td></tr>
 <tr class="separator:a18ef10929dd51c1bd06760f4e62ae92c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60adcb0ae0c1ebedc27e8d84ee294a37"><td class="memItemLeft" align="right" valign="top"><a id="a60adcb0ae0c1ebedc27e8d84ee294a37"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>condorcet_minmax</b> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> creer_duels_mat)</td></tr>
-<tr class="separator:a60adcb0ae0c1ebedc27e8d84ee294a37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5445d8d3be6c82713dcc9f8f7ca14977"><td class="memItemLeft" align="right" valign="top"><a id="a5445d8d3be6c82713dcc9f8f7ca14977"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>condorcet_paires_class</b> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> duels_mat)</td></tr>
-<tr class="separator:a5445d8d3be6c82713dcc9f8f7ca14977"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a419146ccf1debb30ce9f69b19920c42e"><td class="memItemLeft" align="right" valign="top"><a id="a419146ccf1debb30ce9f69b19920c42e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="condorcet_8h.html#a419146ccf1debb30ce9f69b19920c42e">condorcet_minmax</a> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> duels_mat, <a class="el" href="structs__str__tab__dyn.html">t_str_tab_dyn</a> candidats, FILE *logfp, int nb_votants)</td></tr>
+<tr class="memdesc:a419146ccf1debb30ce9f69b19920c42e"><td class="mdescLeft">&#160;</td><td class="mdescRight">cherche un vainqueur de condorcet et applique la méthode min max si besoin <br /></td></tr>
+<tr class="separator:a419146ccf1debb30ce9f69b19920c42e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a201ad028b6ffc9caf94b7f31820e15"><td class="memItemLeft" align="right" valign="top"><a id="a2a201ad028b6ffc9caf94b7f31820e15"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="condorcet_8h.html#a2a201ad028b6ffc9caf94b7f31820e15">condorcet_paires_class</a> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> duels_mat, <a class="el" href="structs__str__tab__dyn.html">t_str_tab_dyn</a> candidats, FILE *logfp, int nb_votants)</td></tr>
+<tr class="memdesc:a2a201ad028b6ffc9caf94b7f31820e15"><td class="mdescLeft">&#160;</td><td class="mdescRight">cherche un vainqueur de condorcet et applique la méthode du classement par paire si besoin <br /></td></tr>
+<tr class="separator:a2a201ad028b6ffc9caf94b7f31820e15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e9af29059dfda2311c4bee9c930909d"><td class="memItemLeft" align="right" valign="top"><a id="a7e9af29059dfda2311c4bee9c930909d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="condorcet_8h.html#a7e9af29059dfda2311c4bee9c930909d">condorcet_Schuzle</a> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> duels_mat, <a class="el" href="structs__str__tab__dyn.html">t_str_tab_dyn</a> candidats, FILE *logfp, int nb_votants)</td></tr>
+<tr class="memdesc:a7e9af29059dfda2311c4bee9c930909d"><td class="mdescLeft">&#160;</td><td class="mdescRight">cherche un vainqueur de condorcet puis applique la méthode de Schuzle si besoin <br /></td></tr>
+<tr class="separator:a7e9af29059dfda2311c4bee9c930909d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeaca0cd2065bbc6359c7534163aa714e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="condorcet_8h.html#aeaca0cd2065bbc6359c7534163aa714e">circuits</a> (<a class="el" href="structliste.html">liste</a> larc, int nbCandidats)</td></tr>
+<tr class="memdesc:aeaca0cd2065bbc6359c7534163aa714e"><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoi true si il y a un circuit false sinon  <a href="#aeaca0cd2065bbc6359c7534163aa714e">Plus de détails...</a><br /></td></tr>
 <tr class="separator:aeaca0cd2065bbc6359c7534163aa714e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
@@ -129,6 +144,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>condorcet_paires_class
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>renvoi true si il y a un circuit false sinon </p>
 <p>ajouter un paramètre de dimension pour s'affranchir de la variable globale nbCandidats. utiliser pickElt cherche si le graphe contient un circuit avec tab de marquage et tab de mémoire des arcs </p><dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">la</td><td>liste des arcs. </td></tr>

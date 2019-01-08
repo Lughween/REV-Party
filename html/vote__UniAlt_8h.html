@@ -65,7 +65,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>implémentation du vote alternatif et uninominal 1 et 2;  
+<p>implémentation du vote alternatif ainsi que uninominal 1 et 2;  
 <a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="utils__sd_8h_source.html">utils_sd.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -74,26 +74,40 @@ Graphe des dépendances par inclusion de vote_UniAlt.h:</div>
 <div class="center"><img src="vote__UniAlt_8h__incl.png" border="0" usemap="#vote__UniAlt_8h" alt=""/></div>
 <!-- MAP 0 -->
 </div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><img src="vote__UniAlt_8h__dep__incl.png" border="0" usemap="#vote__UniAlt_8hdep" alt=""/></div>
+<!-- MAP 1 -->
+</div>
 </div>
 <p><a href="vote__UniAlt_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:aa552444581496178e5b8a1f3af96d8f2"><td class="memItemLeft" align="right" valign="top"><a id="aa552444581496178e5b8a1f3af96d8f2"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vote__UniAlt_8h.html#aa552444581496178e5b8a1f3af96d8f2">vote_alternatif</a> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> votes)</td></tr>
-<tr class="memdesc:aa552444581496178e5b8a1f3af96d8f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoi le vainqueur par la méthode vote alternatif <br /></td></tr>
-<tr class="separator:aa552444581496178e5b8a1f3af96d8f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17783c97c731ae74bc4953dc7d5062d9"><td class="memItemLeft" align="right" valign="top"><a id="a17783c97c731ae74bc4953dc7d5062d9"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vote__UniAlt_8h.html#a17783c97c731ae74bc4953dc7d5062d9">uninominal1</a> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> votes)</td></tr>
-<tr class="memdesc:a17783c97c731ae74bc4953dc7d5062d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoi le vainqueur par la méthode uninominal 1 tours <br /></td></tr>
-<tr class="separator:a17783c97c731ae74bc4953dc7d5062d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c365a67b33ad01a8bb872a323bfcb65"><td class="memItemLeft" align="right" valign="top"><a id="a1c365a67b33ad01a8bb872a323bfcb65"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vote__UniAlt_8h.html#a1c365a67b33ad01a8bb872a323bfcb65">uninominal2</a> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> votes)</td></tr>
-<tr class="memdesc:a1c365a67b33ad01a8bb872a323bfcb65"><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoi le vainqueur par la méthode uninominal 2 tours <br /></td></tr>
-<tr class="separator:a1c365a67b33ad01a8bb872a323bfcb65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebe1b1a4966abe582e9c5be8ce11c98e"><td class="memItemLeft" align="right" valign="top"><a id="aebe1b1a4966abe582e9c5be8ce11c98e"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vote__UniAlt_8h.html#aebe1b1a4966abe582e9c5be8ce11c98e">i_max_tab</a> (int *t, int dim)</td></tr>
+<tr class="memdesc:aebe1b1a4966abe582e9c5be8ce11c98e"><td class="mdescLeft">&#160;</td><td class="mdescRight">cherche le seul maximum d'un tableau et renvoi -1 si il y en à plusieurs(permet de gèrer le cas ou il y à 2 vainqueur aexequo) <br /></td></tr>
+<tr class="separator:aebe1b1a4966abe582e9c5be8ce11c98e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a001c9af9fba1ccbba876b028a1618159"><td class="memItemLeft" align="right" valign="top"><a id="a001c9af9fba1ccbba876b028a1618159"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vote__UniAlt_8h.html#a001c9af9fba1ccbba876b028a1618159">vote_alternatif</a> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> votes, <a class="el" href="structs__str__tab__dyn.html">t_str_tab_dyn</a> candidats, FILE *logfp)</td></tr>
+<tr class="memdesc:a001c9af9fba1ccbba876b028a1618159"><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoi le vainqueur par la méthode vote alternatif <br /></td></tr>
+<tr class="separator:a001c9af9fba1ccbba876b028a1618159"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16945e150e3b2427571580047c79c764"><td class="memItemLeft" align="right" valign="top"><a id="a16945e150e3b2427571580047c79c764"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vote__UniAlt_8h.html#a16945e150e3b2427571580047c79c764">uninominal1</a> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> votes, <a class="el" href="structs__str__tab__dyn.html">t_str_tab_dyn</a> candidats, FILE *logfp)</td></tr>
+<tr class="memdesc:a16945e150e3b2427571580047c79c764"><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoi le vainqueur par la méthode uninominal 1 tours <br /></td></tr>
+<tr class="separator:a16945e150e3b2427571580047c79c764"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9aa5115f365aac1dca2e35c9a89aad43"><td class="memItemLeft" align="right" valign="top"><a id="a9aa5115f365aac1dca2e35c9a89aad43"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vote__UniAlt_8h.html#a9aa5115f365aac1dca2e35c9a89aad43">uninominal2</a> (<a class="el" href="structs__mat__dyn.html">t_mat_int_dyn</a> votes, <a class="el" href="structs__str__tab__dyn.html">t_str_tab_dyn</a> candidats, FILE *logfp)</td></tr>
+<tr class="memdesc:a9aa5115f365aac1dca2e35c9a89aad43"><td class="mdescLeft">&#160;</td><td class="mdescRight">renvoi le vainqueur par la méthode uninominal 2 tours <br /></td></tr>
+<tr class="separator:a9aa5115f365aac1dca2e35c9a89aad43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e351986419a0fe3dc9f4fe24b4b3ed8"><td class="memItemLeft" align="right" valign="top"><a id="a2e351986419a0fe3dc9f4fe24b4b3ed8"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="vote__UniAlt_8h.html#a2e351986419a0fe3dc9f4fe24b4b3ed8">i_min_tab</a> (int *t, int dim)</td></tr>
+<tr class="memdesc:a2e351986419a0fe3dc9f4fe24b4b3ed8"><td class="mdescLeft">&#160;</td><td class="mdescRight">cherche le seul minimum d'un tableau et renvoi -1 si il y en à plusieurs(permet de gèrer les votes blanc) <br /></td></tr>
+<tr class="separator:a2e351986419a0fe3dc9f4fe24b4b3ed8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>implémentation du vote alternatif et uninominal 1 et 2; </p>
+<div class="textblock"><p>implémentation du vote alternatif ainsi que uninominal 1 et 2; </p>
 <dl class="section author"><dt>Auteur</dt><dd>Viala Ludovic </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>dec 2018 </dd></dl>
 </div></div><!-- contents -->

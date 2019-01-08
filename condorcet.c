@@ -1,3 +1,6 @@
+/// \file condorcet.c
+/// \author Viala Ludovic
+/// \date december 2018
 #include "condorcet.h"
 
 
@@ -26,28 +29,6 @@ void creer_duel_mat(t_mat_int_dyn *duel_mat,t_mat_int_dyn votes){
 }
 
 void creer_arc_liste(t_mat_int_dyn duels_mat,liste *liste_arc){
-    Elementliste e;
-    for(int i=0;i<duels_mat.nbRows;i++){
-        for(int j=0;j<i;j++){
-            if(duels_mat.tab[i][j] < duels_mat.tab[j][i]){
-                e.orig = i;
-                e.dest = j;
-                e.poids = duels_mat.tab[i][j];
-                addFrontList(liste_arc,e);
-            }
-            else if(duels_mat.tab[i][j] > duels_mat.tab[j][i])
-            {
-                e.orig = j;
-                e.dest = i;
-                e.poids = duels_mat.tab[j][i];
-                addFrontList(liste_arc,e);
-            }
-            
-        }
-    }
-}
-
-void creer_liste_arc_paire(t_mat_int_dyn duels_mat,liste *liste_arc){
      Elementliste e;
     for(int i=0;i<duels_mat.nbRows;i++){
         for(int j=0;j<i;j++){
@@ -64,10 +45,10 @@ void creer_liste_arc_paire(t_mat_int_dyn duels_mat,liste *liste_arc){
                 e.poids = duels_mat.tab[i][j] - duels_mat.tab[j][i];
                 addFrontList(liste_arc,e);
             }
-            
         }
     }
 }
+
 
 int vainqueur_condorcet(t_mat_int_dyn duels_mat){
     bool vainqueur = true;
@@ -97,7 +78,6 @@ void condorcet_minmax(t_mat_int_dyn duels_mat,t_str_tab_dyn candidats,FILE *logf
         int scoreMinMax =0; //le meillieurs des pires scores;
         int scoreMinActuel = nb_votants;
         for(int i=0;i<duels_mat.nbRows;i++){
-            //printf("scoreMinactuel :%d\n",scoreMinActuel);
             if(i == 0)
                 scoreMinActuel = duels_mat.tab[i][1];
             else
@@ -122,49 +102,6 @@ void condorcet_minmax(t_mat_int_dyn duels_mat,t_str_tab_dyn candidats,FILE *logf
         duels_mat.nbCol,nb_votants,gagnant);
 }   
 
-
-
-void condorcet_paires_class(t_mat_int_dyn duels_mat,t_str_tab_dyn candidats,FILE *logfp,int nb_votants){
-    int gagnant =vainqueur_condorcet(duels_mat);;
-    if(gagnant == -1){
-        // liste larcFull;
-        // createList(&larcFull);
-        // fprintf(logfp,"classement par paires : matrice Duels :\n");
-        // affiche_str_tab(&candidats,logfp);
-        // affiche_t_mat_int_dyn(duels_mat,logfp);
-        // fprintf(logfp,"classement par paires : liste arc triées :\n");
-        // creer_liste_arc_paire(duels_mat,&larcFull);
-        // //bubbleSortList(&larcFull);
-        // dumpList(larcFull,logfp);
-        // liste larcConf;
-        // createList(&larcConf);
-        // Elementliste e;
-        // headList(larcFull,&e);
-        // delFrontList(&larcFull);
-        // addFrontList(&larcConf,e);
-        // int nb_candidat = 2;
-        // while(!emptyList(larcFull)){
-        //     fprintf(logfp,"classement par paires : nouvelle liste d'arcs :\n");
-        //     dumpList(larcConf,logfp);
-        //     fprintf(logfp,"nb_candidat:%d",nb_candidat);
-        //     fprintf(logfp,"\n");
-        //     if(circuits(larcConf,nb_candidat))
-        //         delFrontList(&larcConf);
-        //     // fprintf(logfp,"classement par paires : nouvelle liste d'arcs :\n");
-        //     headList(larcFull,&e);
-        //     nb_candidat = nb_nouveaux_candidat(larcConf,e);
-        //     delFrontList(&larcFull);
-        //     addFrontList(&larcConf,e);
-        // };
-    }
-    char vainqueur[CH_MAX];
-    if(gagnant == -1)
-        strcpy(vainqueur,"aucun gagnant");
-    else
-        strcpy(vainqueur,candidats.tab[gagnant]);
-    printf("Mode de Scrutin : Condorcet classement par paire, %d candidats, %d votants, vainqueur = %s\n",
-        duels_mat.nbCol,nb_votants,vainqueur);
-}
 ///\brief renvoie vrai si le candidat dans ce graphe-ci à eu une défaite renvoi false sinon
 bool a_perdu(int candidats,liste larc){
     Elementliste e;
@@ -176,6 +113,44 @@ bool a_perdu(int candidats,liste larc){
     }
     return false;
 }
+
+void condorcet_paires_class(t_mat_int_dyn duels_mat,t_str_tab_dyn candidats,FILE *logfp,int nb_votants){
+    //int gagnant =vainqueur_condorcet(duels_mat);
+    int gagnant =-1;
+    if(gagnant == -1){
+     liste larc;
+     liste arcConfirm;
+     createList(&larc);
+     createList(&arcConfirm);
+     creer_arc_liste(duels_mat,&larc);
+     Elementliste e;
+     tailList(larc,&e);
+     addFrontList(&arcConfirm,e);
+     delTailList(&larc);
+     int nb_candidat = 2;// il y à forcément 2 candidat quand il n'y à qu'un arc;
+     while(!emptyList(larc)){
+         tailList(larc,&e);
+         nb_candidat += nb_nouveaux_candidat(arcConfirm,e);
+         addFrontList(&arcConfirm,e);
+         delTailList(&larc);
+         if(circuits(arcConfirm,nb_candidat)){
+             delFrontList(&arcConfirm);
+         }
+     }
+        for(int i=0;i<nb_candidat;i++){ //trouve le gagnant (celui qui n'a pas perdu)
+            if(!a_perdu(i,arcConfirm))
+                gagnant = i;
+        }
+    }
+    char vainqueur[CH_MAX];
+    if(gagnant == -1)
+        strcpy(vainqueur,"aucun gagnant");
+    else
+        strcpy(vainqueur,candidats.tab[gagnant]);
+    printf("Mode de Scrutin : Condorcet classement par paire, %d candidats, %d votants, vainqueur = %s\n",
+        duels_mat.nbCol,nb_votants,vainqueur);
+}
+
 
 void eliminer_sommet_graphe(int sommet,liste *larc){
     int taille_debut = nbEltList(*larc);
@@ -214,7 +189,7 @@ void verifier_candidat_graphe(t_tab_int_dyn *candidats,liste larc,int *nb_candid
 void Eliminer_Somment_Non_Scharwz(t_tab_int_dyn *candidats,liste *larc,int *nb_candidat_present){
     for(int i=0;i<=larc->Tete;i++){
         if(a_perdu(i,*larc)){
-            eliminer_sommet_graphe(i,&larc);
+            eliminer_sommet_graphe(i,larc);
             candidats->tab[i] = 0;
             *nb_candidat_present = *nb_candidat_present-1;
         }
@@ -233,7 +208,7 @@ void condorcet_Schuzle(t_mat_int_dyn duels_mat,t_str_tab_dyn candidats,FILE *log
         creer_t_tab_int_dyn(&liste_candidat_present,candidats.dim);
         init_tab_int(liste_candidat_present.tab,candidats.dim,1);
         createList(&larc);
-        creer_liste_arc_paire(duels_mat,&larc);
+        creer_arc_liste(duels_mat,&larc);
         bubbleSortList(&larc);
         fprintf(logfp,"Schuzle : liste arc :\n");
         dumpList(larc,logfp);
@@ -264,6 +239,8 @@ void condorcet_Schuzle(t_mat_int_dyn duels_mat,t_str_tab_dyn candidats,FILE *log
             }
         }
         free_t_tab_int(&liste_candidat_present);
+        // free_t_mat_int(&duels_mat);
+        // free_t_tab_int(&candidats);
     }
     char vainqueur[CH_MAX];
     if(gagnant == -1)

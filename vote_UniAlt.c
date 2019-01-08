@@ -1,3 +1,6 @@
+/// \file vote_UniAlt.c
+/// \author Viala Ludovic
+/// \date december 2018
 #include "vote_UniAlt.h"
 
 int i_max_tab(int *t,int dim){
@@ -18,6 +21,29 @@ int i_max_tab(int *t,int dim){
     if(plusieurMax)
         return -1;
     return i_max;
+}
+///\brief renvoir les deux maximum d'un tableau
+void i_2max_tab(int *t,int dim,int *i_max1,int *i_max2){
+    *i_max1 = ((t[0]<=t[1])?1:0);
+    *i_max2 = ((t[0]>t[1])?1:0);
+    // bool tropDeMax = false;
+    int max1 = MAX(t[0],t[1]);
+    int max2 = MIN(t[0],t[1]);
+    int i =2;
+    while(i<dim){
+        if(t[i] > max1){
+            *i_max2 = *i_max1;
+            *i_max1 = i;
+            max2 = max1;
+            max1 = t[i];
+        }else if(t[i] > max2){
+            *i_max2 = i;
+            max2 = t[i];
+        }
+        i++;
+    }
+    // if(tropDeMax)
+    //     return -1;
 }
 
 int nb_votes_exprimer(t_tab_int_dyn scores){
@@ -62,15 +88,15 @@ void uninominal1(t_mat_int_dyn votes,t_str_tab_dyn candidats,FILE *logfp){
     affiche_t_tab_int_dyn(scores_candidat,logfp);
 	gagnant = i_max_tab(scores_candidat.tab,scores_candidat.dim);
     char str_gagnant[CH_MAX];
+    float votes_expr = (float)nb_votes_exprimer(scores_candidat);
+    float score = (scores_candidat.tab[gagnant])/votes_expr*100;//% de votes exprimé
     if(gagnant < 0)
         strcpy(str_gagnant,"aucun");
 	else
         strcpy(str_gagnant,candidats.tab[gagnant]);
-
-    float votes_expr = (float)nb_votes_exprimer(scores_candidat);
-    float score = (scores_candidat.tab[gagnant])/votes_expr*100;//% de votes exprimé
     printf("Mode de Scrutin : Uninominal à 1 Tours, %d candidats, %d votants, vainqueur = %s, score = %.1f\%\n",
         votes.nbCol,votes.nbRows,str_gagnant,score);
+    free_t_tab_int(&scores_candidat);
 }
 
 
@@ -113,23 +139,27 @@ void init_tour2(t_mat_int_dyn *votes,t_str_tab_dyn *candidats,int gagnant1,int g
 }
 
 void uninominal2(t_mat_int_dyn votes,t_str_tab_dyn candidats,FILE *logfp){
-	int gagnant1;
-    int gagnant2;
-    t_tab_int_dyn scores_candidat = calcul_scores(votes);
-    fprintf(logfp,"Uni2 : Score candidat T1:\n");
+	int gagnant1,gagnant2;
+    t_tab_int_dyn scores_candidat = calcul_scores(votes); 
+
+    fprintf(logfp,"Uni2 : Score candidat T1:\n"); 
     affiche_str_tab(&candidats,logfp);
     affiche_t_tab_int_dyn(scores_candidat,logfp);
+
     i_2max_tab(scores_candidat.tab,scores_candidat.dim,&gagnant1,&gagnant2);
+
     char str_gagnant[CH_MAX];
     strcpy(str_gagnant,candidats.tab[gagnant1]);
     float votes_expr = (float)nb_votes_exprimer(scores_candidat);
     float score1 = (scores_candidat.tab[gagnant1]/votes_expr)*100; //% de votes exprimée
+
     printf("Mode de Scrutin : Uninominal à deux Tours, tour 1, %d candidats, %d votants, vainqueur = %s, score = %.1f\%\n",
         votes.nbCol,votes.nbRows,str_gagnant,score1);
     strcpy(str_gagnant,candidats.tab[gagnant2]);
     float score2 = (scores_candidat.tab[gagnant2]/votes_expr)*100;
     printf("Mode de Scrutin : Uninominal à deux Tours, tour 1, %d candidats, %d votants, vainqueur = %s, score = %.1f\%\n",
     votes.nbCol,votes.nbRows,str_gagnant,score2);
+
     init_tour2(&votes,&candidats,gagnant1,gagnant2);
 	tour2(votes,candidats,logfp); //deuxième tour
 }
@@ -152,7 +182,7 @@ int i_min_tab(int *t,int dim){
         return -1;
     return i_min;
 }
-
+/// \brief cherche le minimum d'un tableau autorisant plusieur minimum (renvoi l'indice de la première occurence de celui-ci)
 int i_min_tab_plusieur_min(int *t,int dim){
     int i_min = 0;
     int min = t[0];
@@ -165,6 +195,7 @@ int i_min_tab_plusieur_min(int *t,int dim){
     }
     return i_min;
 }
+
 void vote_alternatif(t_mat_int_dyn votes,t_str_tab_dyn candidats,FILE *logfp){
     int perdant = -1;
     while(votes.nbCol != 1){
@@ -179,27 +210,7 @@ void vote_alternatif(t_mat_int_dyn votes,t_str_tab_dyn candidats,FILE *logfp){
     }
     printf("Mode de Scrutin : Vote Alternatif, %d candidats, %d votants, vainqueur = %s\n",
     votes.nbCol,votes.nbRows,candidats.tab[0]);
+    // free_str_tab_dyn(&candidats);
+    // free_t_mat_int(&votes);
 }
 
-void i_2max_tab(int *t,int dim,int *i_max1,int *i_max2){
-    *i_max1 = ((t[0]<=t[1])?1:0);
-    *i_max2 = ((t[0]>t[1])?1:0);
-    // bool tropDeMax = false;
-    int max1 = MAX(t[0],t[1]);
-    int max2 = MIN(t[0],t[1]);
-    int i =2;
-    while(i<dim){
-        if(t[i] > max1){
-            *i_max2 = *i_max1;
-            *i_max1 = i;
-            max2 = max1;
-            max1 = t[i];
-        }else if(t[i] > max2){
-            *i_max2 = i;
-            max2 = t[i];
-        }
-        i++;
-    }
-    // if(tropDeMax)
-    //     return -1;
-}

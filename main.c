@@ -1,3 +1,6 @@
+/// \file main.c
+/// \author Viala Ludovic
+/// \date december 2018
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,12 +13,13 @@
 #define bal_l 1
 #define bal_d 2
 #define bal_m 3
-
+// boolén gérant la préscence ou non de chaque balise
 bool is_bal_i = false;
 bool is_bal_d = false;
 bool is_bal_l = false;
 bool is_bal_m = false;
 
+///\brief analyse les balise et renvoi les option de chaque balise dans le tableau param_balise
 void analyse_balise_get_arg(int argc,char const *argv[], char **param_balise[4]){
     *param_balise = malloc(4*sizeof(char*)); // une case par balise possible (max 3 balises)
 
@@ -122,6 +126,7 @@ int main(int argc, char const *argv[])
         printf("\n");
         
     }
+    fclose(logfp);
     if(is_bal_i)
         free_t_mat_int(&votes);
     free_t_mat_int(&duel_mat);

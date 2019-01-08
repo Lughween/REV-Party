@@ -8,3 +8,61 @@ permet de trouver un vecteur de condorcet selon les méthodes schulzle, minmax e
 {\ttfamily \#include \char`\"{}utils\+\_\+sd.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}liste.\+h\char`\"{}}\newline
 Graphe des dépendances par inclusion de condorcet.\+h\+:
+% FIG 0
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier \+:
+% FIG 1
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{condorcet_8h_a8f2595df1118318be77bcfce3996cd53}\label{condorcet_8h_a8f2595df1118318be77bcfce3996cd53}} 
+void \hyperlink{condorcet_8h_a8f2595df1118318be77bcfce3996cd53}{creer\+\_\+duel\+\_\+mat} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} $\ast$duel\+\_\+mat, \hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} votes)
+\begin{DoxyCompactList}\small\item\em fonction qui prend une matrice contenant des votes et renvoie sa matrice de duels les poid étant le nombre de vote pour le gagnant \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{condorcet_8h_aadabb4e8c8585e0debd71487cb1a1a9e}\label{condorcet_8h_aadabb4e8c8585e0debd71487cb1a1a9e}} 
+void \hyperlink{condorcet_8h_aadabb4e8c8585e0debd71487cb1a1a9e}{creer\+\_\+arc\+\_\+liste} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} duels\+\_\+mat, \hyperlink{structliste}{liste} $\ast$liste\+\_\+arc)
+\begin{DoxyCompactList}\small\item\em fonction qui prend une matrice contenant des votes et renvoie sa matrice de duels, les poid étant la différence entre les score de chaque candidat pour chaque duel \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{condorcet_8h_a18ef10929dd51c1bd06760f4e62ae92c}\label{condorcet_8h_a18ef10929dd51c1bd06760f4e62ae92c}} 
+int \hyperlink{condorcet_8h_a18ef10929dd51c1bd06760f4e62ae92c}{vainqueur\+\_\+condorcet} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} duels\+\_\+mat)
+\begin{DoxyCompactList}\small\item\em un vainqueur de concorcet si il y en à puis retourne son indice sinon -\/14 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{condorcet_8h_a419146ccf1debb30ce9f69b19920c42e}\label{condorcet_8h_a419146ccf1debb30ce9f69b19920c42e}} 
+void \hyperlink{condorcet_8h_a419146ccf1debb30ce9f69b19920c42e}{condorcet\+\_\+minmax} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} duels\+\_\+mat, \hyperlink{structs__str__tab__dyn}{t\+\_\+str\+\_\+tab\+\_\+dyn} candidats, F\+I\+LE $\ast$logfp, int nb\+\_\+votants)
+\begin{DoxyCompactList}\small\item\em cherche un vainqueur de condorcet et applique la méthode min max si besoin \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{condorcet_8h_a2a201ad028b6ffc9caf94b7f31820e15}\label{condorcet_8h_a2a201ad028b6ffc9caf94b7f31820e15}} 
+void \hyperlink{condorcet_8h_a2a201ad028b6ffc9caf94b7f31820e15}{condorcet\+\_\+paires\+\_\+class} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} duels\+\_\+mat, \hyperlink{structs__str__tab__dyn}{t\+\_\+str\+\_\+tab\+\_\+dyn} candidats, F\+I\+LE $\ast$logfp, int nb\+\_\+votants)
+\begin{DoxyCompactList}\small\item\em cherche un vainqueur de condorcet et applique la méthode du classement par paire si besoin \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{condorcet_8h_a7e9af29059dfda2311c4bee9c930909d}\label{condorcet_8h_a7e9af29059dfda2311c4bee9c930909d}} 
+void \hyperlink{condorcet_8h_a7e9af29059dfda2311c4bee9c930909d}{condorcet\+\_\+\+Schuzle} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} duels\+\_\+mat, \hyperlink{structs__str__tab__dyn}{t\+\_\+str\+\_\+tab\+\_\+dyn} candidats, F\+I\+LE $\ast$logfp, int nb\+\_\+votants)
+\begin{DoxyCompactList}\small\item\em cherche un vainqueur de condorcet puis applique la méthode de Schuzle si besoin \end{DoxyCompactList}\item 
+bool \hyperlink{condorcet_8h_aeaca0cd2065bbc6359c7534163aa714e}{circuits} (\hyperlink{structliste}{liste} larc, int nb\+Candidats)
+\begin{DoxyCompactList}\small\item\em renvoi true si il y a un circuit false sinon \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+permet de trouver un vecteur de condorcet selon les méthodes schulzle, minmax et classement par paires 
+
+\begin{DoxyAuthor}{Auteur}
+Viala Ludovic 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+december 2018 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\mbox{\Hypertarget{condorcet_8h_aeaca0cd2065bbc6359c7534163aa714e}\label{condorcet_8h_aeaca0cd2065bbc6359c7534163aa714e}} 
+\index{condorcet.\+h@{condorcet.\+h}!circuits@{circuits}}
+\index{circuits@{circuits}!condorcet.\+h@{condorcet.\+h}}
+\subsubsection{\texorpdfstring{circuits()}{circuits()}}
+{\footnotesize\ttfamily bool circuits (\begin{DoxyParamCaption}\item[{\hyperlink{structliste}{liste}}]{larc,  }\item[{int}]{nb\+Candidats }\end{DoxyParamCaption})}
+
+
+
+renvoi true si il y a un circuit false sinon 
+
+ajouter un paramètre de dimension pour s\textquotesingle{}affranchir de la variable globale nb\+Candidats. utiliser pick\+Elt cherche si le graphe contient un circuit avec tab de marquage et tab de mémoire des arcs 
+\begin{DoxyParams}[1]{Paramètres}
+\mbox{\tt in}  & {\em la} & liste des arcs. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+\+: true, il y a un circuit, false sinon 
+\end{DoxyReturn}

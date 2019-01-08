@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vote_5falternatif',['vote_alternatif',['../vote__UniAlt_8h.html#aa552444581496178e5b8a1f3af96d8f2',1,'vote_UniAlt.h']]]
+  ['eliminer_5fsomment_5fnon_5fscharwz',['Eliminer_Somment_Non_Scharwz',['../condorcet_8c.html#a6d9ea936da5514035b9d222a5d91df23',1,'condorcet.c']]]
 ];

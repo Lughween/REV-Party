@@ -1,0 +1,41 @@
+\hypertarget{lecture__csv_8c}{}\section{Référence du fichier lecture\+\_\+csv.\+c}
+\label{lecture__csv_8c}\index{lecture\+\_\+csv.\+c@{lecture\+\_\+csv.\+c}}
+{\ttfamily \#include \char`\"{}lecture\+\_\+csv.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de lecture\+\_\+csv.\+c\+:
+% FIG 0
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{lecture__csv_8c_a8edfe2bc237e1dcd6ffade73ff1513c9}\label{lecture__csv_8c_a8edfe2bc237e1dcd6ffade73ff1513c9}} 
+void {\bfseries del\+\_\+jump} (char $\ast$ligne)
+\item 
+\mbox{\Hypertarget{lecture__csv_8c_ae02fd25b0bcb21a0190979c8d8f69475}\label{lecture__csv_8c_ae02fd25b0bcb21a0190979c8d8f69475}} 
+int {\bfseries convertir\+\_\+str\+\_\+to\+\_\+int} (char $\ast$str)
+\item 
+\mbox{\Hypertarget{lecture__csv_8c_a8aceb45e41d9c7a41c4e64e044dda2c9}\label{lecture__csv_8c_a8aceb45e41d9c7a41c4e64e044dda2c9}} 
+void {\bfseries csv\+\_\+get\+\_\+candidat} (char $\ast$vote\+\_\+csv, \hyperlink{structs__str__tab__dyn}{t\+\_\+str\+\_\+tab\+\_\+dyn} $\ast$candidats)
+\item 
+\mbox{\Hypertarget{lecture__csv_8c_a57aed81152e87433439c7372b26b4380}\label{lecture__csv_8c_a57aed81152e87433439c7372b26b4380}} 
+void {\bfseries csv\+\_\+get\+\_\+votes} (char $\ast$vote\+\_\+csv, \hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} $\ast$votes, int nb\+\_\+candidats)
+\item 
+\mbox{\Hypertarget{lecture__csv_8c_a16fa867ad3b08900a49fdde5d77c28fe}\label{lecture__csv_8c_a16fa867ad3b08900a49fdde5d77c28fe}} 
+void {\bfseries csv\+\_\+get\+\_\+duels\+\_\+mat} (char $\ast$votes\+\_\+csv, \hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} $\ast$duels\+\_\+mat, int nb\+\_\+candidats)
+\item 
+\mbox{\Hypertarget{lecture__csv_8c_ad966cc044426597aa61a055a056acb58}\label{lecture__csv_8c_ad966cc044426597aa61a055a056acb58}} 
+void {\bfseries csv\+\_\+get\+\_\+candidat\+\_\+duels} (char $\ast$vote\+\_\+csv, \hyperlink{structs__str__tab__dyn}{t\+\_\+str\+\_\+tab\+\_\+dyn} $\ast$candidats)
+\item 
+\mbox{\Hypertarget{lecture__csv_8c_a3b452415f4dde0be8e6cadd317b295cf}\label{lecture__csv_8c_a3b452415f4dde0be8e6cadd317b295cf}} 
+void {\bfseries csv\+\_\+compte\+\_\+ballot} (char $\ast$csv, int $\ast$nb\+\_\+votants, int $\ast$nb\+\_\+candidats)
+\item 
+\mbox{\Hypertarget{lecture__csv_8c_a8e8a4044f31cbccb382b3356036b0034}\label{lecture__csv_8c_a8e8a4044f31cbccb382b3356036b0034}} 
+void \hyperlink{lecture__csv_8c_a8e8a4044f31cbccb382b3356036b0034}{csv\+\_\+compte\+\_\+duel} (char $\ast$csv, int $\ast$nb\+\_\+votants, int $\ast$nb\+\_\+candidats)
+\begin{DoxyCompactList}\small\item\em compte le nombre de candidats et de votant dans le csv d\textquotesingle{}un ballots \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Viala Ludovic 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+december 2018 
+\end{DoxyDate}

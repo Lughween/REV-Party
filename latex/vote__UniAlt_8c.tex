@@ -1,0 +1,50 @@
+\hypertarget{vote__UniAlt_8c}{}\section{Référence du fichier vote\+\_\+\+Uni\+Alt.\+c}
+\label{vote__UniAlt_8c}\index{vote\+\_\+\+Uni\+Alt.\+c@{vote\+\_\+\+Uni\+Alt.\+c}}
+{\ttfamily \#include \char`\"{}vote\+\_\+\+Uni\+Alt.\+h\char`\"{}}\newline
+Graphe des dépendances par inclusion de vote\+\_\+\+Uni\+Alt.\+c\+:
+% FIG 0
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{vote__UniAlt_8c_aebe1b1a4966abe582e9c5be8ce11c98e}\label{vote__UniAlt_8c_aebe1b1a4966abe582e9c5be8ce11c98e}} 
+int \hyperlink{vote__UniAlt_8c_aebe1b1a4966abe582e9c5be8ce11c98e}{i\+\_\+max\+\_\+tab} (int $\ast$t, int dim)
+\begin{DoxyCompactList}\small\item\em cherche le seul maximum d\textquotesingle{}un tableau et renvoi -\/1 si il y en à plusieurs(permet de gèrer le cas ou il y à 2 vainqueur aexequo) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vote__UniAlt_8c_aaf86c981b671a868979b3e5cd06c6fd7}\label{vote__UniAlt_8c_aaf86c981b671a868979b3e5cd06c6fd7}} 
+int {\bfseries nb\+\_\+votes\+\_\+exprimer} (\hyperlink{structs__tab__dyn}{t\+\_\+tab\+\_\+int\+\_\+dyn} scores)
+\item 
+\mbox{\Hypertarget{vote__UniAlt_8c_ae483f4fd0c7f7ba8912975f62fd3da65}\label{vote__UniAlt_8c_ae483f4fd0c7f7ba8912975f62fd3da65}} 
+\hyperlink{structs__tab__dyn}{t\+\_\+tab\+\_\+int\+\_\+dyn} \hyperlink{vote__UniAlt_8c_ae483f4fd0c7f7ba8912975f62fd3da65}{calcul\+\_\+scores} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} votes)
+\begin{DoxyCompactList}\small\item\em calcul le score de chaque candidat et les met dans un tableau à une dimension. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vote__UniAlt_8c_aaf57720a59c1fa08de6c6bbb93ffd556}\label{vote__UniAlt_8c_aaf57720a59c1fa08de6c6bbb93ffd556}} 
+int \hyperlink{vote__UniAlt_8c_aaf57720a59c1fa08de6c6bbb93ffd556}{trouver\+\_\+votes} (int candidat, \hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} votes)
+\begin{DoxyCompactList}\small\item\em renvoi le nombre de votes pour un candidat donnée \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vote__UniAlt_8c_a16945e150e3b2427571580047c79c764}\label{vote__UniAlt_8c_a16945e150e3b2427571580047c79c764}} 
+void \hyperlink{vote__UniAlt_8c_a16945e150e3b2427571580047c79c764}{uninominal1} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} votes, \hyperlink{structs__str__tab__dyn}{t\+\_\+str\+\_\+tab\+\_\+dyn} candidats, F\+I\+LE $\ast$logfp)
+\begin{DoxyCompactList}\small\item\em renvoi le vainqueur par la méthode uninominal 1 tours \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vote__UniAlt_8c_ac4aac8825a4c3a09f7eefd4bd5611bb1}\label{vote__UniAlt_8c_ac4aac8825a4c3a09f7eefd4bd5611bb1}} 
+void {\bfseries tour2} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} votes, \hyperlink{structs__str__tab__dyn}{t\+\_\+str\+\_\+tab\+\_\+dyn} candidats, F\+I\+LE $\ast$logfp)
+\item 
+\mbox{\Hypertarget{vote__UniAlt_8c_a5919ef8eb5006de9a935fde4d0056164}\label{vote__UniAlt_8c_a5919ef8eb5006de9a935fde4d0056164}} 
+void {\bfseries init\+\_\+tour2} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} $\ast$votes, \hyperlink{structs__str__tab__dyn}{t\+\_\+str\+\_\+tab\+\_\+dyn} $\ast$candidats, int gagnant1, int gagnant2)
+\item 
+\mbox{\Hypertarget{vote__UniAlt_8c_a9aa5115f365aac1dca2e35c9a89aad43}\label{vote__UniAlt_8c_a9aa5115f365aac1dca2e35c9a89aad43}} 
+void \hyperlink{vote__UniAlt_8c_a9aa5115f365aac1dca2e35c9a89aad43}{uninominal2} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} votes, \hyperlink{structs__str__tab__dyn}{t\+\_\+str\+\_\+tab\+\_\+dyn} candidats, F\+I\+LE $\ast$logfp)
+\begin{DoxyCompactList}\small\item\em renvoi le vainqueur par la méthode uninominal 2 tours \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vote__UniAlt_8c_a2e351986419a0fe3dc9f4fe24b4b3ed8}\label{vote__UniAlt_8c_a2e351986419a0fe3dc9f4fe24b4b3ed8}} 
+int \hyperlink{vote__UniAlt_8c_a2e351986419a0fe3dc9f4fe24b4b3ed8}{i\+\_\+min\+\_\+tab} (int $\ast$t, int dim)
+\begin{DoxyCompactList}\small\item\em cherche le seul minimum d\textquotesingle{}un tableau et renvoi -\/1 si il y en à plusieurs(permet de gèrer les votes blanc) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vote__UniAlt_8c_a5d60b41ec32628f36b6bf31d8ed64190}\label{vote__UniAlt_8c_a5d60b41ec32628f36b6bf31d8ed64190}} 
+int \hyperlink{vote__UniAlt_8c_a5d60b41ec32628f36b6bf31d8ed64190}{i\+\_\+min\+\_\+tab\+\_\+plusieur\+\_\+min} (int $\ast$t, int dim)
+\begin{DoxyCompactList}\small\item\em cherche le minimum d\textquotesingle{}un tableau autorisant plusieur minimum (renvoi l\textquotesingle{}indice de la première occurence de celui-\/ci) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{vote__UniAlt_8c_a001c9af9fba1ccbba876b028a1618159}\label{vote__UniAlt_8c_a001c9af9fba1ccbba876b028a1618159}} 
+void \hyperlink{vote__UniAlt_8c_a001c9af9fba1ccbba876b028a1618159}{vote\+\_\+alternatif} (\hyperlink{structs__mat__dyn}{t\+\_\+mat\+\_\+int\+\_\+dyn} votes, \hyperlink{structs__str__tab__dyn}{t\+\_\+str\+\_\+tab\+\_\+dyn} candidats, F\+I\+LE $\ast$logfp)
+\begin{DoxyCompactList}\small\item\em renvoi le vainqueur par la méthode vote alternatif \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+Viala Ludovic 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+december 2018 
+\end{DoxyDate}
