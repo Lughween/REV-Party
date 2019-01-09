@@ -115,8 +115,7 @@ bool a_perdu(int candidats,liste larc){
 }
 
 void condorcet_paires_class(t_mat_int_dyn duels_mat,t_str_tab_dyn candidats,FILE *logfp,int nb_votants){
-    //int gagnant =vainqueur_condorcet(duels_mat);
-    int gagnant =-1;
+    int gagnant =vainqueur_condorcet(duels_mat);
     if(gagnant == -1){
      liste larc;
      liste arcConfirm;
@@ -134,8 +133,12 @@ void condorcet_paires_class(t_mat_int_dyn duels_mat,t_str_tab_dyn candidats,FILE
          addFrontList(&arcConfirm,e);
          delTailList(&larc);
          if(circuits(arcConfirm,nb_candidat)){
+             fprintf(logfp,"Paires del:");
+             afficher_element(e,logfp);
              delFrontList(&arcConfirm);
          }
+         fprintf(logfp,"Paires : liste d'arc: \n");
+         dumpList(arcConfirm,logfp);
      }
         for(int i=0;i<nb_candidat;i++){ //trouve le gagnant (celui qui n'a pas perdu)
             if(!a_perdu(i,arcConfirm))
@@ -184,11 +187,22 @@ void verifier_candidat_graphe(t_tab_int_dyn *candidats,liste larc,int *nb_candid
             }
     }       
 }
+
+bool est_schwarz(t_tab_int_dyn *candidat_present,liste larc,int candidats){
+    Elementliste e;
+    while(!emptyList(larc)){
+        headList(larc,&e);
+        if(e.dest == candidats && candidat_present->tab[e.orig] == 0)
+            return false;
+        delFrontList(&larc);
+    }
+    return true;
+}
 ///\brief verifie si le candidat fait partie de son ensemble de Schwarz (https://fr.wikipedia.org/wiki/M%C3%A9thode_Schulze 
 /// (cf. Heuristique de l'ensemble de Schwartz)) et l'élimine si ce n'est pas le cas
 void Eliminer_Somment_Non_Scharwz(t_tab_int_dyn *candidats,liste *larc,int *nb_candidat_present){
     for(int i=0;i<=larc->Tete;i++){
-        if(a_perdu(i,*larc)){
+        if(!est_schwarz(candidats,*larc,i)){ //elimine qui ne font pas partie de son ensemble de schwarz
             eliminer_sommet_graphe(i,larc);
             candidats->tab[i] = 0;
             *nb_candidat_present = *nb_candidat_present-1;
@@ -200,7 +214,6 @@ void Eliminer_Somment_Non_Scharwz(t_tab_int_dyn *candidats,liste *larc,int *nb_c
 
 void condorcet_Schuzle(t_mat_int_dyn duels_mat,t_str_tab_dyn candidats,FILE *logfp,int nb_votants){
     int gagnant = vainqueur_condorcet(duels_mat);
-
     if(gagnant == -1){
         int nb_candidat_present = candidats.dim;
         liste larc;
@@ -216,28 +229,21 @@ void condorcet_Schuzle(t_mat_int_dyn duels_mat,t_str_tab_dyn candidats,FILE *log
         affiche_str_tab(&candidats,logfp);
         affiche_t_tab_int_dyn(liste_candidat_present,logfp);
         Eliminer_Somment_Non_Scharwz(&liste_candidat_present,&larc,&nb_candidat_present);
-        
-        while(!emptyList(larc) && nb_candidat_present >1){
+        while(nb_candidat_present >2){ //plus qu'un seul arc
             fprintf(logfp,"Schuzle : liste arc :\n");
             dumpList(larc,logfp);
             fprintf(logfp,"Schuzle : candidat présent :\n");
             affiche_str_tab(&candidats,logfp);
             affiche_t_tab_int_dyn(liste_candidat_present,logfp);
             Eliminer_Somment_Non_Scharwz(&liste_candidat_present,&larc,&nb_candidat_present);
-            delFrontList(&larc);
+            delTailList(&larc); //retire le plus petit arc
+            verifier_candidat_graphe(&liste_candidat_present,larc,&nb_candidat_present);
         }
-        affiche_t_tab_int_dyn(liste_candidat_present,logfp);
-        bool isGagnant = false;
-        for(int i=0;i<candidats.dim;i++){
-            if(liste_candidat_present.tab[i] == 1){
-                if(isGagnant)
-                    gagnant = -1;
-                else{
-                    gagnant = i;
-                    isGagnant =true;
-                    }
-            }
-        }
+        Elementliste e;
+        headList(larc,&e);
+        gagnant = e.orig;
+        fprintf(logfp,"arc restant:\n");
+        afficher_element(e,logfp);
         free_t_tab_int(&liste_candidat_present);
         // free_t_mat_int(&duels_mat);
         // free_t_tab_int(&candidats);
